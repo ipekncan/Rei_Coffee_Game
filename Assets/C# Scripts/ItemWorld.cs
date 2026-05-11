@@ -24,24 +24,19 @@ public class ItemWorld : MonoBehaviour
 
     public void SetupItem()
     {
+        foreach (Transform child in transform) { Destroy(child.gameObject); }
         if (itemData.itemModel != null)
         {
             Instantiate(itemData.itemModel, transform);
+            if (spriteRenderer != null) spriteRenderer.enabled = false;
         }
-        else if (itemData.itemIcon != null)
+        else if (itemData.itemIcon != null && spriteRenderer != null)
         {
-
+            spriteRenderer.enabled = true;
             spriteRenderer.sprite = itemData.itemIcon;
         }
     }
-        private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log(itemData.itemName + " toplandý!");
-            Destroy(gameObject);
-        }
-    }
+     
 }
 
 
