@@ -16,7 +16,7 @@ MonoBehaviour:
   itemDescription: 
   itemType: 2
   isStackable: 0
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 1930980443, guid: 64171e5db6082a74eb2c46ebdb9a25c8, type: 3}
   itemModel: {fileID: 919132149155446097, guid: 73356950e2420f842a666dec7abbda87, type: 3}
   toolRange: 3
   maxCapacity: 5

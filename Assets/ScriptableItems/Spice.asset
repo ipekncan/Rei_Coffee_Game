@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ccf2e72f661384aad291c1dbaf1da1, type: 3}
+  m_Name: Spice
+  m_EditorClassIdentifier: Assembly-CSharp::ScItem
+  itemName: Exotic Spice Blend
+  itemDescription: A secret mixture of distant lands' finest spices. Adds a mysterious
+    and fragrant kick to any cup.
+  itemType: 1
+  isStackable: 1
+  itemIcon: {fileID: -1842910008, guid: 64171e5db6082a74eb2c46ebdb9a25c8, type: 3}
+  itemModel: {fileID: 919132149155446097, guid: c6eaac57be3733642b6694d4d1714f37, type: 3}

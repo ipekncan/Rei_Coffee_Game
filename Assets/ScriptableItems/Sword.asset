@@ -16,7 +16,7 @@ MonoBehaviour:
   itemDescription: Players First Sword
   itemType: 3
   isStackable: 0
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 795145525, guid: 64171e5db6082a74eb2c46ebdb9a25c8, type: 3}
   itemModel: {fileID: 919132149155446097, guid: 8fafba1bb427b254cafd452d7bb4f874, type: 3}
   damage: 10
   attackSpeed: 3
