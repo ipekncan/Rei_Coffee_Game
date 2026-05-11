@@ -3,6 +3,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+
+    [Header("Inventory UI")]
+    public GameObject inventoryPanel; 
+    private bool isInventoryOpen = false;
+
     [Header("Player Movement Settings")]
     public float walkSpeed = 5f;
     public float runSpeed = 10f; 
@@ -34,7 +39,7 @@ public class PlayerController : MonoBehaviour
     //-----INPUT SYSTEM ACTIONS -----//
     public void OnMove(InputValue value)
     {
-        if (isDead == true) { return; }
+        if (isDead == true ) { return; }
         Vector2 inputVector = value.Get<Vector2>();
         movement = new Vector3(inputVector.x, 0, inputVector.y);
     }
@@ -109,9 +114,36 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Carrying state toggled: " + isCarrying);
 
     }
+
+    public void OnToggleInventory(InputValue value)
+    {
+        if (value.isPressed && !isDead)
+        {
+            ToggleInventory();
+        }
+    }
+
+    private void ToggleInventory()
+    {
+        isInventoryOpen = !isInventoryOpen;
+        inventoryPanel.SetActive(isInventoryOpen);
+
+        if (isInventoryOpen)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            
+        }
+        else
+        {
+            
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
     void Update()
     {
-        if(isDead== true) { return; }
+        if(isDead== true || isInventoryOpen==true) { return; }
         ApplyGravity();
         MovePlayer();
         HandleRotation();
