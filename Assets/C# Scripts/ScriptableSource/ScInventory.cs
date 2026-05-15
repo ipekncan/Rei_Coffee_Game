@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="Inventory",menuName ="Inventory/NewInventory")]
+
 
 [System.Serializable]
 public class Slot
@@ -12,6 +12,7 @@ public class Slot
     public ScItem item;
 
 }
+[CreateAssetMenu(fileName = "Inventory", menuName = "Inventory/NewInventory")]
 public class ScInventory : ScriptableObject
 {
    public List<Slot> inventorySlots = new List<Slot>();
