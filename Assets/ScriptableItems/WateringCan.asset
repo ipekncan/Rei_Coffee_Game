@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a54c75b6c23c4094fba18b3e35b73458, type: 3}
   m_Name: WateringCan
   m_EditorClassIdentifier: Assembly-CSharp::ScTool
+  itemPrefab: {fileID: 919132149155446097, guid: 73356950e2420f842a666dec7abbda87, type: 3}
   itemName: WateringCan
   itemDescription: 
   itemType: 2

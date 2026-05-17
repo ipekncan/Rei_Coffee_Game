@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [Header("Inventory UI")]
     public GameObject inventoryPanel; 
     private bool isInventoryOpen = false;
+    public int selectedSlot = 0; //hotbar için seçili slot indexi
 
     [Header("Player Movement Settings")]
     public float walkSpeed = 5f;
@@ -21,8 +23,12 @@ public class PlayerController : MonoBehaviour
     //state variables
     private bool isSprinting = false;
     private bool isCarrying = false;
-   
 
+    //carrying selected item
+    [Header("Inventory Reference")]
+    public Inventory playerInventory;
+    public Transform itemHolder;
+    private GameObject currentEquippedItem;
 
     private Animator animator;
     private CharacterController controller;
@@ -34,6 +40,11 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
+
+        if (inventoryPanel == null)
+        {
+            inventoryPanel = GameObject.Find("InventoryImage");
+        }
     }
 
     //-----INPUT SYSTEM ACTIONS -----//
@@ -55,7 +66,15 @@ public class PlayerController : MonoBehaviour
         if (isDead == true) { return; }
         if (value.isPressed && !isCarrying)
         {
-            animator.SetTrigger("Attack");
+            var slot = playerInventory.playerInventory.inventorySlots[selectedSlot];
+            if (slot.item != null && slot.item.itemName == "Sword")
+            {
+                animator.SetTrigger("Attack");
+            }
+            else
+            {
+                Debug.Log("Saldýrmak için kýlýç kuþanmalýsýn!");
+            }
         }
     }
 
@@ -141,12 +160,48 @@ public class PlayerController : MonoBehaviour
             Cursor.visible = false;
         }
     }
+   
+
+    private void OnHotbarInteraction(InputValue value)
+    {
+        float keyFieldValue = value.Get<float>();
+        int index = (int)keyFieldValue - 1;
+        if (index >= 0 && index < 7)
+        {
+            selectedSlot = index;
+            Debug.Log("Seçilen eþya slotu: " + selectedSlot);
+            UpdateEquippedItem();
+        }
+
+    }
     void Update()
     {
         if(isDead== true || isInventoryOpen==true) { return; }
         ApplyGravity();
         MovePlayer();
         HandleRotation();
+     
+    }
+    public void UpdateEquippedItem()
+    {
+        if (currentEquippedItem != null)
+        {
+            Destroy(currentEquippedItem);
+        }
+
+        var inventoryData = playerInventory.playerInventory.inventorySlots;
+        if (selectedSlot < inventoryData.Count)
+        {
+            var slot = inventoryData[selectedSlot];
+
+           
+            if (slot.itemCount > 0 && slot.item != null && slot.item.itemPrefab != null)
+            {
+                currentEquippedItem = Instantiate(slot.item.itemPrefab, itemHolder);
+                currentEquippedItem.transform.localPosition = Vector3.zero;
+                currentEquippedItem.transform.localRotation = Quaternion.identity;
+            }
+        }
     }
 
     void MovePlayer()

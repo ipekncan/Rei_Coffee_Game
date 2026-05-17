@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class InventoryUIControl : MonoBehaviour
 {
+    public List<SlotUI> hotbarUiList = new List<SlotUI>();
     public List<SlotUI> slotUiList = new List<SlotUI>();
     private Inventory userInventory;
     private void Awake()
@@ -41,5 +42,39 @@ public class InventoryUIControl : MonoBehaviour
                 slotUiList[i].itemCountText.gameObject.SetActive(false);
             }
         }
+
+
+        //Hotbar UI'sini güncellemek için benzer bir yöntem ekliyorum
+
+        for (int i = 0; i<hotbarUiList.Count; i++)
+        {
+            var slotData=userInventory.playerInventory.inventorySlots[i];
+            if (slotData.item != null)
+            {
+                Debug.Log("Hotbar'ýn " + i + ". slotuna þu item geliyor: " + slotData.item.itemName);
+            }
+            if (slotData.itemCount > 0 && slotData.item != null)
+            {   
+                hotbarUiList[i].itemImage.sprite = slotData.item.itemIcon;
+                hotbarUiList[i].itemImage.color = Color.white;
+                hotbarUiList[i].itemImage.enabled = true;
+                if (slotData.item.isStackable)
+                {
+                    hotbarUiList[i].itemCountText.gameObject.SetActive(true);
+                    hotbarUiList[i].itemCountText.text = slotData.itemCount.ToString();
+                }
+                else
+                {
+                    hotbarUiList[i].itemCountText.gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                hotbarUiList[i].itemImage.sprite = null;
+                hotbarUiList[i].itemImage.color = new Color(1, 1, 1, 0); 
+                hotbarUiList[i].itemCountText.gameObject.SetActive(false);
+            }
+        }
     }
+
 }

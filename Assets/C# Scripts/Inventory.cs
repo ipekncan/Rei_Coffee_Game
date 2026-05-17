@@ -10,8 +10,13 @@ public class Inventory:MonoBehaviour
 
     private void Start()
     {
-      uiInventory.UpdateUI();
+       
+        uiInventory.UpdateUI();
+        
+
     }
+
+  
     public void SwappItem(int index)
     {
         if (playerInventory == null || playerInventory.inventorySlots == null)

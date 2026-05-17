@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/General Item")]
 public class ScItem : ScriptableObject
 {
+    public GameObject itemPrefab;
     public string itemName;
     public string itemDescription;
     public ItemType itemType;
