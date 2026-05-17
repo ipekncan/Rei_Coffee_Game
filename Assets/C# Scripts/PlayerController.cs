@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     //state variables
     private bool isSprinting = false;
     private bool isCarrying = false;
-    private int activeSlot = 0;//we will use this to track which item slot is active for inventory management
+   
 
 
     private Animator animator;

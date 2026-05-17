@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Inventory
   m_EditorClassIdentifier: Assembly-CSharp::ScInventory
   inventorySlots:
-  - hasItem: 0
-    itemCount: 0
-    item: {fileID: 0}
-  - hasItem: 0
-    itemCount: 0
-    item: {fileID: 0}
+  - hasItem: 1
+    itemCount: 1
+    item: {fileID: 11400000, guid: ca83f50a145f5974f932b6b6f5eaec9e, type: 2}
+  - hasItem: 1
+    itemCount: 1
+    item: {fileID: 11400000, guid: e41dc0fcbc11ca14da838d6b49c3ce7b, type: 2}
   - hasItem: 0
     itemCount: 0
     item: {fileID: 0}

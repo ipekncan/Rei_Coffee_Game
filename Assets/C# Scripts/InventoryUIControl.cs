@@ -13,36 +13,32 @@ public class InventoryUIControl : MonoBehaviour
     }
     public void UpdateUI()
     {
-        
-
         for (int i = 0; i < slotUiList.Count; i++)
         {
-            
-            if (userInventory.playerInventory.inventorySlots[i].itemCount > 0)
-            {
-                
-                slotUiList[i].itemImage.sprite = userInventory.playerInventory.inventorySlots[i].item.itemIcon;
-                slotUiList[i].itemImage.enabled = true; 
+            var slotData = userInventory.playerInventory.inventorySlots[i];
 
-                
-                if (userInventory.playerInventory.inventorySlots[i].item.isStackable == true)
+            if (slotData.itemCount > 0 && slotData.item != null)
+            {
+                slotUiList[i].itemImage.sprite = slotData.item.itemIcon;
+                slotUiList[i].itemImage.color = Color.white;
+                slotUiList[i].itemImage.enabled = true;
+
+                if (slotData.item.isStackable)
                 {
                     slotUiList[i].itemCountText.gameObject.SetActive(true);
-                    slotUiList[i].itemCountText.text = userInventory.playerInventory.inventorySlots[i].itemCount.ToString();
+                    slotUiList[i].itemCountText.text = slotData.itemCount.ToString();
                 }
                 else
                 {
-                   
                     slotUiList[i].itemCountText.gameObject.SetActive(false);
                 }
             }
-            
             else
             {
                 slotUiList[i].itemImage.sprite = null;
-                slotUiList[i].itemImage.enabled = false; 
+                slotUiList[i].itemImage.color = new Color(1, 1, 1, 0); 
+
                 slotUiList[i].itemCountText.gameObject.SetActive(false);
-                slotUiList[i].itemCountText.text = "";
             }
         }
     }

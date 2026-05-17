@@ -5,23 +5,47 @@ public class Inventory:MonoBehaviour
     public ScInventory playerInventory;
     public InventoryUIControl uiInventory;
     bool isSwapping;
+    int tempIndex;
+    Slot tempSlot;
 
     private void Start()
     {
       uiInventory.UpdateUI();
     }
-    public void SwappItem(int fromIndex, int toIndex)
+    public void SwappItem(int index)
     {
-       if(fromIndex<0 || fromIndex >= playerInventory.inventorySlots.Count || toIndex < 0 || toIndex >= playerInventory.inventorySlots.Count)
-       {
-           Debug.LogError("DÝKKAT: Geçersiz indeks! Lütfen geçerli bir indeks aralýðý girin.");
-           return;
+        if (playerInventory == null || playerInventory.inventorySlots == null)
+        {
+            Debug.LogError("Player Inventory (ScriptableObject) baðlý deðil!");
+            return;
         }
 
-       Slot bufferSlot=playerInventory.inventorySlots[fromIndex];
-        playerInventory.inventorySlots[fromIndex]=playerInventory.inventorySlots[toIndex];
-        playerInventory.inventorySlots[toIndex]=bufferSlot;
-        uiInventory.UpdateUI();
+        if (isSwapping == false)
+        {
+           
+            tempIndex = index;
+            tempSlot = playerInventory.inventorySlots[tempIndex];
+            isSwapping = true;
+            Debug.Log("Birinci slot seçildi: " + index + ". Þimdi yer deðiþtireceðiniz ikinci slota basýn.");
+        }
+        else
+        {
+            Debug.Log("Ýkinci slot seçildi: " + index + ". Yer deðiþtiriliyor...");
+
+            playerInventory.inventorySlots[tempIndex] = playerInventory.inventorySlots[index];
+            playerInventory.inventorySlots[index] = tempSlot;
+
+            isSwapping = false;
+            if (uiInventory != null)
+            {
+                uiInventory.UpdateUI();
+                Debug.Log("Envanter ekraný güncellendi.");
+            }
+            else
+            {
+                Debug.LogWarning("uiInventory referansý eksik, ekran güncellenemedi!");
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
