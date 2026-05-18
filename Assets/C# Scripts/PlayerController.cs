@@ -63,7 +63,11 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttack(InputValue value)
     {
-        if (isDead == true) { return; }
+       
+        if (isDead || isInventoryOpen) return;
+
+       
+      
         if (value.isPressed && !isCarrying)
         {
             var slot = playerInventory.playerInventory.inventorySlots[selectedSlot];
