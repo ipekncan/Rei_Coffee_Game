@@ -1,8 +1,15 @@
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+
+    [Header("Inventory UI")]
+    public GameObject inventoryPanel; 
+    private bool isInventoryOpen = false;
+    public int selectedSlot = 0; //hotbar için seçili slot indexi
+
     [Header("Player Movement Settings")]
     public float walkSpeed = 5f;
     public float runSpeed = 10f; 
@@ -16,8 +23,12 @@ public class PlayerController : MonoBehaviour
     //state variables
     private bool isSprinting = false;
     private bool isCarrying = false;
-    private int activeSlot = 0;//we will use this to track which item slot is active for inventory management
 
+    //carrying selected item
+    [Header("Inventory Reference")]
+    public Inventory playerInventory;
+    public Transform itemHolder;
+    private GameObject currentEquippedItem;
 
     private Animator animator;
     private CharacterController controller;
@@ -29,12 +40,17 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
+
+        if (inventoryPanel == null)
+        {
+            inventoryPanel = GameObject.Find("InventoryImage");
+        }
     }
 
     //-----INPUT SYSTEM ACTIONS -----//
     public void OnMove(InputValue value)
     {
-        if (isDead == true) { return; }
+        if (isDead == true ) { return; }
         Vector2 inputVector = value.Get<Vector2>();
         movement = new Vector3(inputVector.x, 0, inputVector.y);
     }
@@ -47,10 +63,22 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttack(InputValue value)
     {
-        if (isDead == true) { return; }
+       
+        if (isDead || isInventoryOpen) return;
+
+       
+      
         if (value.isPressed && !isCarrying)
         {
-            animator.SetTrigger("Attack");
+            var slot = playerInventory.playerInventory.inventorySlots[selectedSlot];
+            if (slot.item != null && slot.item.itemName == "Sword")
+            {
+                animator.SetTrigger("Attack");
+            }
+            else
+            {
+                Debug.Log("Saldýrmak için kýlýç kuþanmalýsýn!");
+            }
         }
     }
 
@@ -109,12 +137,75 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Carrying state toggled: " + isCarrying);
 
     }
+
+    public void OnToggleInventory(InputValue value)
+    {
+        if (value.isPressed && !isDead)
+        {
+            ToggleInventory();
+        }
+    }
+
+    private void ToggleInventory()
+    {
+        isInventoryOpen = !isInventoryOpen;
+        inventoryPanel.SetActive(isInventoryOpen);
+
+        if (isInventoryOpen)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            
+        }
+        else
+        {
+            
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
+   
+
+    private void OnHotbarInteraction(InputValue value)
+    {
+        float keyFieldValue = value.Get<float>();
+        int index = (int)keyFieldValue - 1;
+        if (index >= 0 && index < 7)
+        {
+            selectedSlot = index;
+            Debug.Log("Seçilen eþya slotu: " + selectedSlot);
+            UpdateEquippedItem();
+        }
+
+    }
     void Update()
     {
-        if(isDead== true) { return; }
+        if(isDead== true || isInventoryOpen==true) { return; }
         ApplyGravity();
         MovePlayer();
         HandleRotation();
+     
+    }
+    public void UpdateEquippedItem()
+    {
+        if (currentEquippedItem != null)
+        {
+            Destroy(currentEquippedItem);
+        }
+
+        var inventoryData = playerInventory.playerInventory.inventorySlots;
+        if (selectedSlot < inventoryData.Count)
+        {
+            var slot = inventoryData[selectedSlot];
+
+           
+            if (slot.itemCount > 0 && slot.item != null && slot.item.itemPrefab != null)
+            {
+                currentEquippedItem = Instantiate(slot.item.itemPrefab, itemHolder);
+                currentEquippedItem.transform.localPosition = Vector3.zero;
+                currentEquippedItem.transform.localRotation = Quaternion.identity;
+            }
+        }
     }
 
     void MovePlayer()

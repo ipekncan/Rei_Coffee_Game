@@ -2,7 +2,17 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="Inventory",menuName ="Inventory/NewInventory")]
+
+
+[System.Serializable]
+public class Slot
+{
+    public bool hasItem;
+    public int itemCount;
+    public ScItem item;
+
+}
+[CreateAssetMenu(fileName = "Inventory", menuName = "Inventory/NewInventory")]
 public class ScInventory : ScriptableObject
 {
    public List<Slot> inventorySlots = new List<Slot>();
@@ -11,7 +21,7 @@ public class ScInventory : ScriptableObject
     {
         if (item == null || count <= 0) return;
 
-        // 1. ADIM: Mevcut slotlarda "Yer Var mý?" kontrolü (Stacking)
+        // Mevcut slotlarda "Yer Var mý?" kontrolü (Stacking)
         if (item.isStackable)
         {
             foreach (Slot slot in inventorySlots)
@@ -31,7 +41,7 @@ public class ScInventory : ScriptableObject
             }
         }
 
-        // 2. ADIM: Kalan eþyalar için BOÞ SLOTLARI doldur
+        //  Kalan eþyalar için BOÞ SLOTLARI doldur
         for (int i = 0; i < inventorySlots.Count; i++)
         {
             if (!inventorySlots[i].hasItem)
@@ -39,7 +49,7 @@ public class ScInventory : ScriptableObject
                 inventorySlots[i].item = item;
                 inventorySlots[i].hasItem = true;
 
-                // Burasý kritik: Tek seferde en fazla stackLimit kadar ekle
+                //  Tek seferde en fazla stackLimit kadar ekle
                 int itemsToAdd = Mathf.Min(stackLimit, count);
                 inventorySlots[i].itemCount = itemsToAdd;
                 count -= itemsToAdd;
@@ -49,7 +59,7 @@ public class ScInventory : ScriptableObject
             }
         }
 
-        // 3. ADIM: Boþ slot bittiyse ama hala eþya varsa (Envanter dolu demektir)
+        // Boþ slot bittiyse ama hala eþya varsa (Envanter dolu demektir)
         if (count > 0)
         {
             Debug.LogWarning("Envanterde yer kalmadý! Kalan miktar: " + count);
@@ -57,12 +67,6 @@ public class ScInventory : ScriptableObject
     }
 }
 
-//bir programlama nesnesinin durumunu (içindeki verileri) saklanabilir veya að üzerinden gönderilebilir bir formata (byte akýþý, JSON, XML) dönüþtürülebilir hale getiren bir arayüz veya iþaretleme yöntemidir
+//Serializable: bir programlama nesnesinin durumunu (içindeki verileri) saklanabilir veya að üzerinden gönderilebilir bir formata (byte akýþý, JSON, XML) dönüþtürülebilir hale getiren bir arayüz veya iþaretleme yöntemidir
 
-[System.Serializable]
-public class Slot{
-    public bool hasItem;
-    public int itemCount;
-    public ScItem item;
 
-}
