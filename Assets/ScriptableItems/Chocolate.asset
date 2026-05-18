@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ccf2e72f661384aad291c1dbaf1da1, type: 3}
   m_Name: Chocolate
   m_EditorClassIdentifier: Assembly-CSharp::ScItem
-  itemName: Artisan Chocolate Bar
+  itemPrefab: {fileID: 919132149155446097, guid: 1438d5f5ddd6d674c951c82f3b0557e1, type: 3}
+  itemName: Artisan Cikolata Bar
   itemDescription: Rich, dark chocolate with high cocoa content. A must-have for
     crafting decadent Mochas
   itemType: 1

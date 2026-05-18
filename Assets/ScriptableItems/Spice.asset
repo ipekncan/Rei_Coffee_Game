@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ccf2e72f661384aad291c1dbaf1da1, type: 3}
   m_Name: Spice
   m_EditorClassIdentifier: Assembly-CSharp::ScItem
+  itemPrefab: {fileID: 919132149155446097, guid: c6eaac57be3733642b6694d4d1714f37, type: 3}
   itemName: Exotic Spice Blend
   itemDescription: A secret mixture of distant lands' finest spices. Adds a mysterious
     and fragrant kick to any cup.

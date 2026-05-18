@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccfe239ab9845f4590660df06cf4f29, type: 3}
   m_Name: BlueBrewSapling
   m_EditorClassIdentifier: Assembly-CSharp::ScPlant
+  itemPrefab: {fileID: 919132149155446097, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
   itemName: Blue-tinted Cold Brew Sapling
   itemDescription: The leaves feel cold to the touch. A specialized plant favored
     by those who prefer a refreshing Cold Brew.
   itemType: 0
   isStackable: 1
   itemIcon: {fileID: 47902274, guid: 64171e5db6082a74eb2c46ebdb9a25c8, type: 3}
-  itemModel: {fileID: 919132149155446097, guid: 9cd23be7705ee144085d9f934f2f7d51, type: 3}
+  itemModel: {fileID: 919132149155446097, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
   growthTime: 360
-  harvestResult: {fileID: 0}
+  harvestResult: {fileID: 11400000, guid: 54b6c019f14d7454b99e00bb9a484de4, type: 2}
