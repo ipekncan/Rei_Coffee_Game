@@ -539,6 +539,50 @@ PrefabInstance:
       addedObject: {fileID: 1873377565}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44f653295e66b274584c665970fcf281, type: 3}
+--- !u!1 &336390619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 336390621}
+  - component: {fileID: 336390620}
+  m_Layer: 0
+  m_Name: SpawnPoint_Cafe_Forest
+  m_TagString: SpawnPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &336390620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336390619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 300c48ac8b29b7e4a8a29049b281871d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
+--- !u!4 &336390621
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336390619}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 68.23, y: 0.12108374, z: 11.46}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &493065813 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: af5f0eeae57514148b45ee92183667cb, type: 3}
@@ -2100,6 +2144,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kapi_dis (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8296961850321282928, guid: 00315884fb38f1b499e7a2b4fa67e31e, type: 3}
+      propertyPath: sceneToLoad
+      value: Forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 8296961850321282928, guid: 00315884fb38f1b499e7a2b4fa67e31e, type: 3}
+      propertyPath: warningText
+      value: 
+      objectReference: {fileID: 570788978}
+    - target: {fileID: 8296961850321282928, guid: 00315884fb38f1b499e7a2b4fa67e31e, type: 3}
+      propertyPath: warningPanel
+      value: 
+      objectReference: {fileID: 1081771461}
+    - target: {fileID: 8296961850321282928, guid: 00315884fb38f1b499e7a2b4fa67e31e, type: 3}
+      propertyPath: targetSpawnID
+      value: SpawnPoint_Forest
+      objectReference: {fileID: 0}
     - target: {fileID: 8532671454111990387, guid: 00315884fb38f1b499e7a2b4fa67e31e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.95
@@ -2155,4 +2215,5 @@ SceneRoots:
   - {fileID: 1970751799}
   - {fileID: 291267639}
   - {fileID: 1408330839}
+  - {fileID: 336390621}
   - {fileID: 1501738539}
