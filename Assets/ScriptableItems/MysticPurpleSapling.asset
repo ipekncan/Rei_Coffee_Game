@@ -20,5 +20,10 @@ MonoBehaviour:
   isStackable: 1
   itemIcon: {fileID: -1198400410, guid: 64171e5db6082a74eb2c46ebdb9a25c8, type: 3}
   itemModel: {fileID: 919132149155446097, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+  yieldAmount: 3
+  levelgrowthTime: 10
+  stage1Mesh: {fileID: 7200813882020725636, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+  stage2Mesh: {fileID: 2351851401240460083, guid: 16f8d6969be09e54b9ec621db02340c1, type: 3}
+  stage3Mesh: {fileID: 7200813882020725636, guid: 8a22b0d2d1e18144f848e91e2c0379d5, type: 3}
   growthTime: 780
   harvestResult: {fileID: 11400000, guid: a725765a6ef33a342a6ac949614fccf8, type: 2}
