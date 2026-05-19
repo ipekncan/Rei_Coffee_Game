@@ -10,27 +10,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: bc472c8b5a86d3e4bace0491606421cb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.122891195
+      value: 0.1939
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc472c8b5a86d3e4bace0491606421cb, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.122891195
+      value: 0.1939
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc472c8b5a86d3e4bace0491606421cb, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.122891195
+      value: 0.1939
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc472c8b5a86d3e4bace0491606421cb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 103.52059
+      value: 98.09
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc472c8b5a86d3e4bace0491606421cb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5165935
+      value: 1.6230435
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc472c8b5a86d3e4bace0491606421cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -50.815987
+      value: -53.61472
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc472c8b5a86d3e4bace0491606421cb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -68,40 +68,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: RawGreenCoffeeBean
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: bc472c8b5a86d3e4bace0491606421cb, type: 3}
-      propertyPath: m_TagString
-      value: Item
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bc472c8b5a86d3e4bace0491606421cb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6776854435897722962}
+      addedObject: {fileID: 6501508656409132098}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bc472c8b5a86d3e4bace0491606421cb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6501508656409132098}
+      addedObject: {fileID: 6776854435897722962}
   m_SourcePrefab: {fileID: 100100000, guid: bc472c8b5a86d3e4bace0491606421cb, type: 3}
 --- !u!1 &6863405428000219381 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bc472c8b5a86d3e4bace0491606421cb, type: 3}
   m_PrefabInstance: {fileID: 6052520202896006564}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6776854435897722962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6863405428000219381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22b201684f212aa4f96d89f881b0c44e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemWorld
-  itemData: {fileID: 11400000, guid: 745381fee99205449815d363dacda665, type: 2}
-  amount: 1
 --- !u!135 &6501508656409132098
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -123,3 +105,17 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.4870214
   m_Center: {x: 0.007133931, y: -0.012097478, z: -0.3343679}
+--- !u!114 &6776854435897722962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6863405428000219381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b201684f212aa4f96d89f881b0c44e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemWorld
+  itemData: {fileID: 11400000, guid: 745381fee99205449815d363dacda665, type: 2}
+  amount: 1

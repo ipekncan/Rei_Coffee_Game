@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ccf2e72f661384aad291c1dbaf1da1, type: 3}
   m_Name: Light Roast Beans
   m_EditorClassIdentifier: Assembly-CSharp::ScItem
-  itemPrefab: {fileID: 919132149155446097, guid: bc472c8b5a86d3e4bace0491606421cb, type: 3}
+  itemPrefab: {fileID: 3446427083965145966, guid: 9e57e680304e94c439fdcd5a4cac997d, type: 3}
   itemName: Light Roast Beans
   itemDescription: Delicate and floral. These beans offer a tea-like clarity and
     bright acidity for the sophisticated palate.
   itemType: 1
   isStackable: 1
   itemIcon: {fileID: -44096332, guid: 64171e5db6082a74eb2c46ebdb9a25c8, type: 3}
-  itemModel: {fileID: 919132149155446097, guid: bc472c8b5a86d3e4bace0491606421cb, type: 3}
+  itemModel: {fileID: 4043852745242766635, guid: 4d9f130ab9f7c1e48b170ed1fe35e173, type: 3}

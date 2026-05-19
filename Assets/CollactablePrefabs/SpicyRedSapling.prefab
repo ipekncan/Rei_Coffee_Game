@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2382482971539486171
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 101.3381
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.2261045
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -50.32296
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.2688893
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.9573452
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.06435836
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.083945364
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+      propertyPath: m_Name
+      value: SpicyRedSapling
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+      propertyPath: m_TagString
+      value: Item
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2855503753763767000}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4229734593988469433}
+  m_SourcePrefab: {fileID: 100100000, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+--- !u!1 &3301471069638625418 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+  m_PrefabInstance: {fileID: 2382482971539486171}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &2855503753763767000
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3301471069638625418}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.35610467
+  m_Center: {x: -0.03429001, y: 0.20263322, z: -0.110922314}
+--- !u!114 &4229734593988469433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3301471069638625418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b201684f212aa4f96d89f881b0c44e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemWorld
+  itemData: {fileID: 11400000, guid: 61755607e3d8e4948a11983bfdd5b11e, type: 2}
+  amount: 1

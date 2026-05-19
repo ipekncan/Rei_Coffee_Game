@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Clasic Espresso Coffee
   m_EditorClassIdentifier: Assembly-CSharp::ScItem
   itemPrefab: {fileID: 919132149155446097, guid: a5f36ea33502c414bbdedbd1443fc5df, type: 3}
-  itemName: Klasik Espresso
+  itemName: Classic Espresso
   itemDescription: 
   itemType: 5
   isStackable: 0

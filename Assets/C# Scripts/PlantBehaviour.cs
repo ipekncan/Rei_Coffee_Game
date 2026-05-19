@@ -6,7 +6,6 @@ public class PlantBehaviour : MonoBehaviour
     public ScPlant SaplingData;
     public int currentStage = 1;
     private float timer = 0;
-    private MeshFilter meshFilter;
 
     public GameObject stage1Obj;
     public GameObject stage2Obj;
@@ -16,9 +15,6 @@ public class PlantBehaviour : MonoBehaviour
 
     void Start()
     {
-        meshFilter = GetComponentInChildren<MeshFilter>();
-
-
         if (SaplingData == null)
         {
             Debug.LogError((gameObject.name)+"üzerinde SaplingData (ScriptableObject) eksik!");
@@ -65,7 +61,7 @@ public class PlantBehaviour : MonoBehaviour
             case 3: if (stage3Obj) stage3Obj.SetActive(true); break;
         }
 
-        Debug.Log($"Görsel Deðiþti: Aþama {currentStage} aktif.");
+        Debug.Log($"Görsel Degisti: Aþama {currentStage} aktif.");
     }
 
     public void Harvest()

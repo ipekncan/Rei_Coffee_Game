@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mystic Forest Coffee
   m_EditorClassIdentifier: Assembly-CSharp::ScItem
   itemPrefab: {fileID: 919132149155446097, guid: 5f75790cbb3c1de48908efe1d0a32ddc, type: 3}
-  itemName: Mistik Orman Kahvesi
+  itemName: Mystic Forest Coffee
   itemDescription: 
   itemType: 5
   isStackable: 0

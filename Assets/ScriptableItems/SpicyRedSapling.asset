@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccfe239ab9845f4590660df06cf4f29, type: 3}
   m_Name: SpicyRedSapling
   m_EditorClassIdentifier: Assembly-CSharp::ScPlant
-  itemPrefab: {fileID: 919132149155446097, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+  itemPrefab: {fileID: 7729148859134760653, guid: c9ea3f2dcb275df4c8f32b3c23403ade, type: 3}
   itemName: Spicy Red Coffee Sapling
   itemDescription: A fiery plant that thrives in heat. It naturally infuses its beans
     with notes of cinnamon and cloves.
@@ -22,8 +22,5 @@ MonoBehaviour:
   itemModel: {fileID: 919132149155446097, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
   yieldAmount: 3
   levelgrowthTime: 10
-  stage1Mesh: {fileID: 7200813882020725636, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
-  stage2Mesh: {fileID: 2351851401240460083, guid: 16f8d6969be09e54b9ec621db02340c1, type: 3}
-  stage3Mesh: {fileID: 7200813882020725636, guid: 8a22b0d2d1e18144f848e91e2c0379d5, type: 3}
-  growthTime: 250
+  equippedHandPrefab: {fileID: 919132149155446097, guid: bd648d520e9bedb4ebf25a5b538cce6d, type: 3}
   harvestResult: {fileID: 11400000, guid: ac17e03d45cd64f4e8003574a61dc0d5, type: 2}

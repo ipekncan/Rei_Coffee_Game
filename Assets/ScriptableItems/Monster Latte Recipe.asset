@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Monster Latte Recipe
   m_EditorClassIdentifier: Assembly-CSharp::ScRecipe
   itemPrefab: {fileID: 919132149155446097, guid: 9df516fb1948ae44da25a189f03ee6e9, type: 3}
-  itemName: Canavar Latte Tarifi
+  itemName: Monster Latte Recipe
   itemDescription: "Canavarlardan d\xFC\u015Fen \xF6zel bir i\xE7erik gerektiren,
     daha de\u011Ferli bir tarif."
   itemType: 4

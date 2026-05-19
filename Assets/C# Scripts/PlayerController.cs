@@ -166,7 +166,6 @@ public class PlayerController : MonoBehaviour
     {
         GameObject newPlant = Instantiate(plantPrefab, position, Quaternion.identity);
 
-        
         newPlant.tag = "Plant"; 
 
         if (newPlant.TryGetComponent<PlantBehaviour>(out PlantBehaviour plantbh))

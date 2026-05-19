@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mystic Forest Recipe
   m_EditorClassIdentifier: Assembly-CSharp::ScRecipe
   itemPrefab: {fileID: 919132149155446097, guid: 5f75790cbb3c1de48908efe1d0a32ddc, type: 3}
-  itemName: Mistik Orman Kahvesi Tarifi
+  itemName: Mystic Forest Coffee Recipe
   itemDescription: 
   itemType: 4
   isStackable: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Eternal Iced Mocha
   m_EditorClassIdentifier: Assembly-CSharp::ScItem
   itemPrefab: {fileID: 919132149155446097, guid: 5f8afd939cd7852439dc68de0e2fd0f5, type: 3}
-  itemName: Sonsuz Soguk Mocha
+  itemName: Eternal Iced Mocha
   itemDescription: 
   itemType: 5
   isStackable: 0
