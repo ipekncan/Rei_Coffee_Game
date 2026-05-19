@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ccf2e72f661384aad291c1dbaf1da1, type: 3}
   m_Name: Sugar
   m_EditorClassIdentifier: Assembly-CSharp::ScItem
+  itemPrefab: {fileID: 919132149155446097, guid: f0d29d5db1770254e84bb2962939caac, type: 3}
   itemName: Refined Sugar Cubes
   itemDescription: A quick and sweet fix. For customers who prefer their brew a little
     less bold and a lot more sweet.

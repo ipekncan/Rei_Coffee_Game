@@ -34,7 +34,9 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector3 movement;
     private float verticalVelocity;
-    
+
+    [Header("Planting Settings")]
+    public GameObject plantPrefab;
 
     void Start()
     {
@@ -90,6 +92,7 @@ public class PlayerController : MonoBehaviour
 
         foreach (var hitCollider in hitColliders)
         {
+            if (hitCollider.GetComponent<PlantBehaviour>() != null) return hitCollider.gameObject;
 
             if (hitCollider.CompareTag("Machine") ||
                 hitCollider.CompareTag("Item") ||
@@ -104,32 +107,77 @@ public class PlayerController : MonoBehaviour
     {
         if (value.isPressed && !isDead)
         {
-            
             GameObject target = GetNearbyObject();
+            Debug.Log("Etkileþimde bulunulacak nesne: " + (target != null ? target.name : "Yok"));
 
             if (target != null)
             {
+               
+                if (target.TryGetComponent<PlantBehaviour>(out PlantBehaviour plant))
+                {
+                    if (plant.isHarvestable)
+                    {
+                        animator.SetTrigger("isInteracting");
+                        plant.Harvest();
+                        Debug.Log("Bitki hasat edildi: " + plant.SaplingData.itemName);
+                    }
+                    else
+                    {
+                        Debug.Log("Bu bitki henüz büyüme aþamasýnda, hasat edilemez!");
+                    }
+
+                    
+                    return;
+                }
+
                 
                 if (target.CompareTag("Machine"))
                 {
-                    //machine interaction minigame trigger
-                    animator.SetTrigger("isInteracting"); 
+                    animator.SetTrigger("isInteracting");
                 }
                 else if (target.CompareTag("Item"))
                 {
-
-                    animator.SetTrigger("UseItem"); 
+                    animator.SetTrigger("UseItem");
                 }
-
                 else if (target.CompareTag("FieldArea"))
                 {
-                    animator.SetTrigger("isInteracting");
-                    ToggleCarrying();
+                    Debug.Log("Tarla alanýna etkileþim gerçekleþti.");
+                    var currentSlot = playerInventory.playerInventory.inventorySlots[selectedSlot];
+
+                    if (currentSlot.itemCount > 0 && currentSlot.item is ScPlant saplingData)
+                    {
+                        Debug.Log("Fidan ekme iþlemi gerçekleþiyor: " + saplingData.itemName);
+                        animator.SetTrigger("isInteracting");
+                        PlantSapling(target.transform.position, saplingData);
+
+                        playerInventory.playerInventory.RemoveItem(currentSlot.item, 1);
+                        playerInventory.uiInventory.UpdateUI();
+                    }
+                    else
+                    {
+                        Debug.Log("Ekmek için geçerli bir fidan seçili deðil.");
+                        animator.SetTrigger("isInteracting");
+                    }
                 }
             }
         }
     }
+    private void PlantSapling(Vector3 position, ScPlant saplingData)
+    {
+        GameObject newPlant = Instantiate(plantPrefab, position, Quaternion.identity);
 
+        newPlant.tag = "Plant"; 
+
+        if (newPlant.TryGetComponent<PlantBehaviour>(out PlantBehaviour plantbh))
+        {
+            plantbh.SaplingData = saplingData;
+            Debug.Log("Bitki baþarýyla ekildi ve script baðlandý.");
+        }
+        else
+        {
+            Debug.LogError("HATA: Ektiðin 'plantPrefab' üzerinde PlantBehaviour scripti bulunamadý!");
+        }
+    }
     private void ToggleCarrying()
     {
         isCarrying = !isCarrying;
@@ -164,11 +212,14 @@ public class PlayerController : MonoBehaviour
             Cursor.visible = false;
         }
     }
-   
+
 
     private void OnHotbarInteraction(InputValue value)
     {
+        
         float keyFieldValue = value.Get<float>();
+        if (keyFieldValue <= 0) return;
+
         int index = (int)keyFieldValue - 1;
         if (index >= 0 && index < 7)
         {
@@ -176,7 +227,6 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Seçilen eþya slotu: " + selectedSlot);
             UpdateEquippedItem();
         }
-
     }
     void Update()
     {
@@ -188,9 +238,11 @@ public class PlayerController : MonoBehaviour
     }
     public void UpdateEquippedItem()
     {
+        Debug.Log($"UpdateEquippedItem çaðrýldý! Çaðýran obje: {gameObject.name}", gameObject);
         if (currentEquippedItem != null)
         {
             Destroy(currentEquippedItem);
+            currentEquippedItem = null; 
         }
 
         var inventoryData = playerInventory.playerInventory.inventorySlots;
@@ -201,9 +253,20 @@ public class PlayerController : MonoBehaviour
            
             if (slot.itemCount > 0 && slot.item != null && slot.item.itemPrefab != null)
             {
-                currentEquippedItem = Instantiate(slot.item.itemPrefab, itemHolder);
-                currentEquippedItem.transform.localPosition = Vector3.zero;
-                currentEquippedItem.transform.localRotation = Quaternion.identity;
+                if (slot.item is ScPlant plantItem && plantItem.equippedHandPrefab != null)
+                {
+                    currentEquippedItem = Instantiate(plantItem.equippedHandPrefab, itemHolder);
+                }
+                else if (slot.item.itemPrefab != null)
+                {
+                    currentEquippedItem = Instantiate(slot.item.itemPrefab, itemHolder);
+                }
+
+                if (currentEquippedItem != null)
+                {
+                    currentEquippedItem.transform.localPosition = Vector3.zero;
+                    currentEquippedItem.transform.localRotation = Quaternion.identity;
+                }
             }
         }
     }

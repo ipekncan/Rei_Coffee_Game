@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ccf2e72f661384aad291c1dbaf1da1, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: Assembly-CSharp::ScItem
+  itemPrefab: {fileID: 919132149155446097, guid: 994fb6d3deddbd6488904ef253342c12, type: 3}
   itemName: Crystal Clear Water
   itemDescription: Sourced from high-altitude mountain springs. It ensures the purest
     expression of the coffee's flavor.

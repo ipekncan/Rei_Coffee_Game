@@ -65,6 +65,30 @@ public class ScInventory : ScriptableObject
             Debug.LogWarning("Envanterde yer kalmadý! Kalan miktar: " + count);
         }
     }
+
+
+
+    public void RemoveItem(ScItem item, int count)
+    {
+        if (item==null) return;
+
+        for (int i = 0; i<inventorySlots.Count; i++)
+        {
+
+            if (inventorySlots[i].hasItem && inventorySlots[i].item==item)
+            {
+                inventorySlots[i].itemCount -= count;
+            }
+            if(inventorySlots[i].itemCount <= 0)
+            {
+                inventorySlots[i].hasItem = false;
+                inventorySlots[i].item = null;
+                inventorySlots[i].itemCount = 0;
+            }
+            
+        }
+        return;
+    }
 }
 
 //Serializable: bir programlama nesnesinin durumunu (içindeki verileri) saklanabilir veya að üzerinden gönderilebilir bir formata (byte akýþý, JSON, XML) dönüþtürülebilir hale getiren bir arayüz veya iþaretleme yöntemidir

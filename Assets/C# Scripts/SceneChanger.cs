@@ -1,5 +1,6 @@
+using TMPro;
 using UnityEngine;
-
+using System.Collections;
 
 public class SceneChanger : MonoBehaviour
 {
@@ -10,16 +11,26 @@ public class SceneChanger : MonoBehaviour
     public string sceneToLoad; // Name of the scene to load
     public string targetSpawnID;
 
+
+    [Header("Warning UI")]
+    public GameObject warningPanel; 
+    public TextMeshProUGUI warningText; 
+    public float displayDuration = 3f;
+
     public static string lastTargetSpawnID = "";
+
+
 
 
     private void Start()
     {
-        timeManager = FindObjectOfType<TimeManager>();
+        timeManager = FindFirstObjectByType<TimeManager>();
         if (timeManager == null)
         {
-            Debug.LogError("TimeManager bulunamadý! Lütfen sahnede bir TimeManager olduðundan emin olun.");
+            Debug.LogError("TimeManager bulunamadý!");
         }
+
+        if (warningPanel != null) warningPanel.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,15 +44,34 @@ public class SceneChanger : MonoBehaviour
 
                 if (currentHour >= timeManager.dayStartHour && currentHour < timeManager.nightStartHour)
                 {
-                    Debug.Log("Dýþarýsý çok tehlikeli! Sadece gece vakti (22:00'den sonra) çýkabilirsin.");
-                    
+                    ShowWarning("Dýþarýsý þu an çok tehlikeli, geceyi bekle!");
                     return;
+
                 }
-                lastTargetSpawnID = targetSpawnID;
-                Debug.Log("Hafizaya atanan target id: " + lastTargetSpawnID);
-                UnityEngine.SceneManagement.SceneManager.LoadScene(sceneToLoad);
+                
+            }
+            lastTargetSpawnID = targetSpawnID;
+            Debug.Log("Hafizaya atanan target id: " + lastTargetSpawnID);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneToLoad);
+        }
+
+        void ShowWarning(string message)
+        {
+            if (warningPanel != null && warningText != null)
+            {
+                StopAllCoroutines(); // Eðer üst üste binerse öncekini durdur
+                StartCoroutine(WarningRoutine(message));
             }
         }
 
+        IEnumerator WarningRoutine(string message)
+        {
+            warningText.text = message;
+            warningPanel.SetActive(true);
+
+            yield return new WaitForSeconds(displayDuration);
+
+            warningPanel.SetActive(false);
+        }
     }
 }

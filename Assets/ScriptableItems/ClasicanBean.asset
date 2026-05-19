@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ccf2e72f661384aad291c1dbaf1da1, type: 3}
   m_Name: ClasicanBean
   m_EditorClassIdentifier: Assembly-CSharp::ScItem
+  itemPrefab: {fileID: 8065244574290726803, guid: 126c9e454f1b13b42b7a236c620f6ec1, type: 3}
   itemName: Classic Roasted Beans
   itemDescription: Expertly roasted to a medium-dark finish. Perfect for a traditional
     morning espresso.
   itemType: 1
   isStackable: 1
   itemIcon: {fileID: 72634169, guid: 64171e5db6082a74eb2c46ebdb9a25c8, type: 3}
-  itemModel: {fileID: 919132149155446097, guid: bc472c8b5a86d3e4bace0491606421cb, type: 3}
+  itemModel: {fileID: 4043852745242766635, guid: 4d9f130ab9f7c1e48b170ed1fe35e173, type: 3}

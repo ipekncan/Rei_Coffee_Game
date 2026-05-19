@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccfe239ab9845f4590660df06cf4f29, type: 3}
   m_Name: MysticPurpleSapling
   m_EditorClassIdentifier: Assembly-CSharp::ScPlant
+  itemPrefab: {fileID: 7729148859134760653, guid: c9ea3f2dcb275df4c8f32b3c23403ade, type: 3}
   itemName: Mystic Purple Night Sapling
   itemDescription: This magical plant glows under the moonlight. Its beans provide
     a mysterious energy boost to midnight customers.
   itemType: 0
   isStackable: 1
   itemIcon: {fileID: -1198400410, guid: 64171e5db6082a74eb2c46ebdb9a25c8, type: 3}
-  itemModel: {fileID: 919132149155446097, guid: 9cd23be7705ee144085d9f934f2f7d51, type: 3}
-  growthTime: 780
-  harvestResult: {fileID: 0}
+  itemModel: {fileID: 919132149155446097, guid: d1ed899ef2b4ff54a894d4ce3b7c2054, type: 3}
+  yieldAmount: 3
+  levelgrowthTime: 10
+  equippedHandPrefab: {fileID: 919132149155446097, guid: bd648d520e9bedb4ebf25a5b538cce6d, type: 3}
+  harvestResult: {fileID: 11400000, guid: a725765a6ef33a342a6ac949614fccf8, type: 2}
