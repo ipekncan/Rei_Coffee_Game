@@ -8,6 +8,9 @@ TagManager:
   - Item
   - Door
   - SpawnPoint
+  - FieldArea
+  - Machine
+  - Plant
   layers:
   - Default
   - TransparentFX

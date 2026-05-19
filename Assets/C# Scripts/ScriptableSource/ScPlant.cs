@@ -6,14 +6,13 @@ public class ScPlant : ScItem
 {
     public int yieldAmount = 3;
     public float levelgrowthTime = 10f; // Her aþama arasý süre
-    [Header("Visuals")]
-    public Mesh stage1Mesh; 
-    public Mesh stage2Mesh; 
-    public Mesh stage3Mesh;
+   
+
+    [Header("Visuals (Equiped Version)")]
+    // Eþya hotbarda seçildiðinde oyuncunun elinde sadece bu sade prefab olacak
+    public GameObject equippedHandPrefab;
 
     [Header("Harvest")]
-   
-    public float growthTime; 
     public ScItem harvestResult; 
 
 

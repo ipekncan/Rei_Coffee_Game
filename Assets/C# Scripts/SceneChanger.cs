@@ -24,7 +24,7 @@ public class SceneChanger : MonoBehaviour
 
     private void Start()
     {
-        timeManager = FindObjectOfType<TimeManager>();
+        timeManager = FindFirstObjectByType<TimeManager>();
         if (timeManager == null)
         {
             Debug.LogError("TimeManager bulunamadý!");

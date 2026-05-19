@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ccf2e72f661384aad291c1dbaf1da1, type: 3}
   m_Name: Raw Green Coffee Beans
   m_EditorClassIdentifier: Assembly-CSharp::ScItem
-  itemPrefab: {fileID: 919132149155446097, guid: bc472c8b5a86d3e4bace0491606421cb, type: 3}
+  itemPrefab: {fileID: 6863405428000219381, guid: 3cf701b9ff43d654e86d3dcf27bbe48f, type: 3}
   itemName: Raw Green Coffee Beans
   itemDescription: Freshly harvested and unroasted. Great for health-focused infusions
     or custom roasting experiments.

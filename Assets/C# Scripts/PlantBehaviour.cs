@@ -4,14 +4,26 @@ using UnityEngine;
 public class PlantBehaviour : MonoBehaviour
 {
     public ScPlant SaplingData;
-    private int currentStage = 1;
+    public int currentStage = 1;
     private float timer = 0;
     private MeshFilter meshFilter;
+
+    public GameObject stage1Obj;
+    public GameObject stage2Obj;
+    public GameObject stage3Obj;
+
     public bool isHarvestable = false;
 
     void Start()
     {
-        meshFilter = GetComponent<MeshFilter>();
+        meshFilter = GetComponentInChildren<MeshFilter>();
+
+
+        if (SaplingData == null)
+        {
+            Debug.LogError((gameObject.name)+"üzerinde SaplingData (ScriptableObject) eksik!");
+            return;
+        }
         UpdateVisual();
     }
 
@@ -20,8 +32,8 @@ public class PlantBehaviour : MonoBehaviour
         if (currentStage < 3)
         {
             timer += Time.deltaTime;
-            if (timer >= SaplingData.growthTime)
-            {
+            if (timer >= SaplingData.levelgrowthTime)
+            {   Debug.Log("Büyüme zamaný geldi! Aþama: " + currentStage);
                 Grow();
             }
         }
@@ -32,15 +44,28 @@ public class PlantBehaviour : MonoBehaviour
         currentStage++;
         timer = 0;
         UpdateVisual();
-
+        Debug.Log("Bitki büyüdü! Þu anki aþama: " + currentStage);
         if (currentStage == 3) isHarvestable = true;
     }
 
+
+
     void UpdateVisual()
     {
-        if (currentStage == 1) meshFilter.mesh = SaplingData.stage1Mesh;
-        else if (currentStage == 2) meshFilter.mesh = SaplingData.stage2Mesh;
-        else if (currentStage == 3) meshFilter.mesh = SaplingData.stage3Mesh;
+        // Önce hepsini kapat
+        if (stage1Obj) stage1Obj.SetActive(false);
+        if (stage2Obj) stage2Obj.SetActive(false);
+        if (stage3Obj) stage3Obj.SetActive(false);
+
+        // Sadece mevcut aþamayý aç
+        switch (currentStage)
+        {
+            case 1: if (stage1Obj) stage1Obj.SetActive(true); break;
+            case 2: if (stage2Obj) stage2Obj.SetActive(true); break;
+            case 3: if (stage3Obj) stage3Obj.SetActive(true); break;
+        }
+
+        Debug.Log($"Görsel Deðiþti: Aþama {currentStage} aktif.");
     }
 
     public void Harvest()
@@ -51,9 +76,9 @@ public class PlantBehaviour : MonoBehaviour
 
 
 
-            Inventory playerInv = Object.FindObjectOfType<Inventory>();
+            Inventory playerInv = Object.FindFirstObjectByType<Inventory>();
 
-            if (playerInv != null || playerInv.playerInventory !=null)
+            if (playerInv != null && playerInv.playerInventory !=null)
             {
 
 

@@ -24,19 +24,28 @@ public class ItemWorld : MonoBehaviour
 
     public void SetupItem()
     {
-        foreach (Transform child in transform) { Destroy(child.gameObject); }
-        if (itemData.itemModel != null)
+        
+        if (GetComponentInChildren<MeshFilter>() != null)
         {
-            Instantiate(itemData.itemModel, transform);
+            return;
+        }
+
+        if (itemData != null && itemData.itemModel != null)
+        {
+
+            foreach (Transform child in transform) { Destroy(child.gameObject); }
+
+            GameObject spawnedModel = Instantiate(itemData.itemModel, transform);
+
+            if (spawnedModel.TryGetComponent<ItemWorld>(out ItemWorld component))
+            {
+                Destroy(component);
+            }
+
             if (spriteRenderer != null) spriteRenderer.enabled = false;
         }
-        else if (itemData.itemIcon != null && spriteRenderer != null)
-        {
-            spriteRenderer.enabled = true;
-            spriteRenderer.sprite = itemData.itemIcon;
-        }
     }
-     
+
 }
 
 
