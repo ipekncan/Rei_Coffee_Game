@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ccf2e72f661384aad291c1dbaf1da1, type: 3}
   m_Name: Mystic Forest Coffee
   m_EditorClassIdentifier: Assembly-CSharp::ScItem
-  itemPrefab: {fileID: 919132149155446097, guid: 5f75790cbb3c1de48908efe1d0a32ddc, type: 3}
+  itemPrefab: {fileID: 5866963656835028276, guid: 7f26707aaea842e4c925cede43b8a8bb, type: 3}
   itemName: Mystic Forest Coffee
   itemDescription: 
   itemType: 5

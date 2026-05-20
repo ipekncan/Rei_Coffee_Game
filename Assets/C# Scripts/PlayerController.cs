@@ -96,7 +96,8 @@ public class PlayerController : MonoBehaviour
 
             if (hitCollider.CompareTag("Machine") ||
                 hitCollider.CompareTag("Item") ||
-                hitCollider.CompareTag("FieldArea"))
+                hitCollider.CompareTag("FieldArea") ||
+                hitCollider.CompareTag("Recipe"))
             {
                 return hitCollider.gameObject;
             }
@@ -135,9 +136,22 @@ public class PlayerController : MonoBehaviour
                 {
                     animator.SetTrigger("isInteracting");
                 }
-                else if (target.CompareTag("Item"))
+                else if (target.CompareTag("Recipe"))
                 {
-                    animator.SetTrigger("UseItem");
+                    if (target.TryGetComponent<ItemWorld>(out ItemWorld itemWorld))
+                        //TryGetComponent ile ItemWorld scripti var mý kontrol ediyoruz, varsa itemWorld deðiþkenine atýyoruz
+                    {
+                       
+                        if (itemWorld.itemData is ScRecipe recipe)
+                        {
+                            animator.SetTrigger("isInteracting");
+                            RecipeManager.Instance.LearnNewRecipe(recipe); 
+                            Destroy(target); 
+                            return;
+                        }
+                        animator.SetTrigger("UseItem");
+                    }
+                    
                 }
                 else if (target.CompareTag("FieldArea"))
                 {

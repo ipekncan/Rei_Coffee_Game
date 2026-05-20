@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6ccf2e72f661384aad291c1dbaf1da1, type: 3}
-  m_Name: Eternal Iced Mocha
+  m_Name: Lava Brew Coffee
   m_EditorClassIdentifier: Assembly-CSharp::ScItem
-  itemPrefab: {fileID: 3702504652515606868, guid: f1f2410b2d53eb346ab4461990edb78e, type: 3}
-  itemName: Eternal Iced Mocha
+  itemPrefab: {fileID: 8954197273245999997, guid: 513f93ec4d6060b4f95f080b59824c3d, type: 3}
+  itemName: Lava Brew Coffee
   itemDescription: 
   itemType: 5
   isStackable: 0
-  itemIcon: {fileID: 376178667, guid: d3507aeb720b9974fa8f44172310e64a, type: 3}
-  itemModel: {fileID: 919132149155446097, guid: 5f8afd939cd7852439dc68de0e2fd0f5, type: 3}
+  itemIcon: {fileID: 1669322790, guid: d3507aeb720b9974fa8f44172310e64a, type: 3}
+  itemModel: {fileID: 919132149155446097, guid: a5f36ea33502c414bbdedbd1443fc5df, type: 3}

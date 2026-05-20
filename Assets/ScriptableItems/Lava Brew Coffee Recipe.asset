@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afdad6987d27e5a438a86505a9d7ca8a, type: 3}
-  m_Name: Classic Espresso Recipe
+  m_Name: Lava Brew Coffee Recipe
   m_EditorClassIdentifier: Assembly-CSharp::ScRecipe
-  itemPrefab: {fileID: 2412246148832460305, guid: 43e1903e76f3afc43a010db5004cad21, type: 3}
-  itemName: Klasik Espresso
-  itemDescription: "En temel enerji kayna\u011F\u0131. H\u0131zl\u0131 haz\u0131rlan\u0131r."
+  itemPrefab: {fileID: 6238005182571783423, guid: b4f7ea4fd8e061347bdb37047a2f5dde, type: 3}
+  itemName: 'Lava Brew Coffee Recipe '
+  itemDescription: 
   itemType: 4
   isStackable: 0
-  itemIcon: {fileID: 1651902325, guid: d3507aeb720b9974fa8f44172310e64a, type: 3}
+  itemIcon: {fileID: 1669322790, guid: d3507aeb720b9974fa8f44172310e64a, type: 3}
   itemModel: {fileID: 919132149155446097, guid: a5f36ea33502c414bbdedbd1443fc5df, type: 3}
   ingredients:
-  - item: {fileID: 11400000, guid: ac17e03d45cd64f4e8003574a61dc0d5, type: 2}
+  - item: {fileID: 11400000, guid: 54b6c019f14d7454b99e00bb9a484de4, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: bd8bd1c63e0095647867595fee4d55af, type: 2}
     amount: 1
   - item: {fileID: 11400000, guid: 6f241e20adc00594592e8349cd73a544, type: 2}
     amount: 1
-  resultItem: {fileID: 11400000, guid: 96f9271772f8cb44f90985c30cd469b2, type: 2}
+  resultItem: {fileID: 11400000, guid: fbaa654a7477aec4f97e4db170d0bd30, type: 2}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afdad6987d27e5a438a86505a9d7ca8a, type: 3}
   m_Name: Monster Latte Recipe
   m_EditorClassIdentifier: Assembly-CSharp::ScRecipe
-  itemPrefab: {fileID: 919132149155446097, guid: 9df516fb1948ae44da25a189f03ee6e9, type: 3}
+  itemPrefab: {fileID: 7976053538930728282, guid: ed340adef21acb84c9b365ae18edf44e, type: 3}
   itemName: Monster Latte Recipe
   itemDescription: "Canavarlardan d\xFC\u015Fen \xF6zel bir i\xE7erik gerektiren,
     daha de\u011Ferli bir tarif."

@@ -11,6 +11,7 @@ TagManager:
   - FieldArea
   - Machine
   - Plant
+  - Recipe
   layers:
   - Default
   - TransparentFX

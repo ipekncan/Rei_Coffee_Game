@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ccf2e72f661384aad291c1dbaf1da1, type: 3}
   m_Name: Monster Latte
   m_EditorClassIdentifier: Assembly-CSharp::ScItem
-  itemPrefab: {fileID: 919132149155446097, guid: 9df516fb1948ae44da25a189f03ee6e9, type: 3}
+  itemPrefab: {fileID: 369164679521427584, guid: a0308411e7be3814ca49c68327fc2cca, type: 3}
   itemName: 'Monster Latte '
   itemDescription: 
   itemType: 5

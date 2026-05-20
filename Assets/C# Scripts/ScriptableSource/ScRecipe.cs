@@ -4,11 +4,21 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Recipe", menuName = "Inventory/Recipe")]
 public class ScRecipe : ScItem
 {
-    [Header("Tarif Ýçeriði")]
+    [Header("Tarif Icerigi")]
     public List<Ingredient> ingredients; 
-    public ScItem resultItem;          
+    public ScItem resultItem;
+    public string GetRecipeDescription()
+    {
+        string description = "Recipe:\n";
+        foreach (var ingredient in ingredients)
+        {
+            description += $"{ingredient.amount} x {ingredient.item.itemName}\n";
+        }
+        description += $"Result: {resultItem.itemName}";
+        return description;
+    }
+    
 
-         
 }
 
 [System.Serializable]
