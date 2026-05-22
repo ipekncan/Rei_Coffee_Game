@@ -131,27 +131,38 @@ public class PlayerController : MonoBehaviour
                     return;
                 }
 
-                
+
                 if (target.CompareTag("Machine"))
                 {
-                    animator.SetTrigger("isInteracting");
+
+                    CafeMakerManager manager = target.GetComponent<CafeMakerManager>();
+                    if (manager != null)
+                    {
+                        animator.SetTrigger("isInteracting");
+                        manager.OpenMachineUI();
+                        Debug.Log("Makine ile etkileþim gerçekleþti: " + target.name);
+                    }
+                    else
+                    {
+                        Debug.LogError("HATA: 'Machine' tagine sahip nesnede CafeMakerManager scripti bulunamadý!");
+                    }
                 }
                 else if (target.CompareTag("Recipe"))
                 {
                     if (target.TryGetComponent<ItemWorld>(out ItemWorld itemWorld))
-                        //TryGetComponent ile ItemWorld scripti var mý kontrol ediyoruz, varsa itemWorld deðiþkenine atýyoruz
+                    //TryGetComponent ile ItemWorld scripti var mý kontrol ediyoruz, varsa itemWorld deðiþkenine atýyoruz
                     {
-                       
+
                         if (itemWorld.itemData is ScRecipe recipe)
                         {
                             animator.SetTrigger("isInteracting");
-                            RecipeManager.Instance.LearnNewRecipe(recipe); 
-                            Destroy(target); 
+                            RecipeManager.Instance.LearnNewRecipe(recipe);
+                            Destroy(target);
                             return;
                         }
                         animator.SetTrigger("UseItem");
                     }
-                    
+
                 }
                 else if (target.CompareTag("FieldArea"))
                 {
