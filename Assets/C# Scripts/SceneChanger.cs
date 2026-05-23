@@ -20,10 +20,11 @@ public class SceneChanger : MonoBehaviour
     public static string lastTargetSpawnID = "";
 
 
-
+    
 
     private void Start()
     {
+
         timeManager = FindFirstObjectByType<TimeManager>();
         if (timeManager == null)
         {
