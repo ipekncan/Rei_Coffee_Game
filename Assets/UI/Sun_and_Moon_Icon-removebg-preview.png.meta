@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3bab8fcdcfe59d34c8b7ee804fa24faf
+guid: 891f0abaf8c6a1e4883de0478dff4124
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -39,7 +39,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sun
+      name: Sun_and_Moon_Icon-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 138
-        width: 111
-        height: 111
+        x: 0
+        y: 136
+        width: 128
+        height: 115
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,20 +112,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80ce818aad70bb841b452f5297b53515
-      internalID: 392139654
+      spriteID: 15e19c42024266c4185540c48f9ded6f
+      internalID: 644678976
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Moon
+      name: Sun_and_Moon_Icon-removebg-preview_1
       rect:
         serializedVersion: 2
-        x: 6
-        y: 20
-        width: 111
-        height: 112
+        x: 0
+        y: 19
+        width: 128
+        height: 114
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,8 +134,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee4da8e4684b62347bc3979bb467200e
-      internalID: -1678213008
+      spriteID: 8314efac5bee48e4c80e31ce21038bf8
+      internalID: 1617143891
       vertices: []
       indices: 
       edges: []
@@ -144,7 +144,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a3cafed63caac5a49b00d1f43dc955f0
+    spriteID: 6546f2c0da608e34d950f64bdd5b7b2f
     internalID: 0
     vertices: []
     indices: 
@@ -153,13 +153,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries:
-      - key: SpriteEditor.SliceOnImport
-        value: False
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":2.0},"gridSpriteSize":{"x":128.0,"y":125.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Moon: -1678213008
-      Sun: 392139654
+      Sun_and_Moon_Icon-removebg-preview_0: 644678976
+      Sun_and_Moon_Icon-removebg-preview_1: 1617143891
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
