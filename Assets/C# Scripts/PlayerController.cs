@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
     [Header("Planting Settings")]
     public GameObject plantPrefab;
 
+    EnemyController enemy; 
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -65,17 +67,26 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttack(InputValue value)
     {
-       
         if (isDead || isInventoryOpen) return;
 
-       
-      
         if (value.isPressed && !isCarrying)
         {
             var slot = playerInventory.playerInventory.inventorySlots[selectedSlot];
             if (slot.item != null && slot.item.itemName == "Sword")
             {
                 animator.SetTrigger("Attack");
+
+                // En yakýn enemy'yi bul ve hasar ver
+                Collider[] hits = Physics.OverlapSphere(transform.position, 2.5f);
+                foreach (var hit in hits)
+                {
+                    EnemyController ec = hit.GetComponent<EnemyController>();
+                    if (ec != null)
+                    {
+                        ec.TakeDamage(20);
+                        break; // ilk bulunan enemy'ye vur
+                    }
+                }
             }
             else
             {

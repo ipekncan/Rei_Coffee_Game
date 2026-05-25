@@ -1,18 +1,27 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
+
 
 public class EnemyController : MonoBehaviour
 {
+
     public NavMeshAgent enemy_1;
 
     public float startWaitTime = 4;
     public float rotateTime = 2;
-    public float speedWalk = 4;   
-    public float speedRun = 6;   
+    public float speedWalk = 4;
+    public float speedRun = 6;
     public float viewRadius = 15;
     public float viewAngle = 90;
     public LayerMask playerMask;
     public LayerMask obstacleMask;
+
+    public bool isDead = false;
+    public int m_health = 50;
+
+    public float attackRange = 2.5f;
+    public int attackDamage = 10;
 
     public Transform[] waypoints;
     int m_currentWaypointIndex;
@@ -29,6 +38,9 @@ public class EnemyController : MonoBehaviour
     Transform m_playerTransform;
     Animator m_animator;
 
+    private PlayerController playerController; // bunu ekle
+    private float lastAttackTime;
+
     void Start()
     {
         m_animator = GetComponent<Animator>();
@@ -42,7 +54,10 @@ public class EnemyController : MonoBehaviour
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
+        {
             m_playerTransform = playerObj.transform;
+            playerController = playerObj.GetComponent<PlayerController>(); // bunu ekle
+        }
 
         enemy_1 = GetComponent<NavMeshAgent>();
         enemy_1.isStopped = false;
@@ -62,10 +77,14 @@ public class EnemyController : MonoBehaviour
 
     void Move(float speed)
     {
-        enemy_1.isStopped = false;
-        enemy_1.speed = speed;
-        m_animator.SetFloat("Speed", speed);
-        m_animator.SetBool("IsChasing", !m_isPatrol);
+        if (!isDead)
+        {
+            enemy_1.isStopped = false;
+            enemy_1.speed = speed;
+            m_animator.SetFloat("Speed", speed);
+            m_animator.SetBool("IsChasing", !m_isPatrol);
+        }
+
     }
 
     void Stop()
@@ -180,19 +199,28 @@ public class EnemyController : MonoBehaviour
         m_playerNear = false;
         playerLastPosition = Vector3.zero;
 
-        if (!m_playerCaught)
+        if (m_playerTransform == null) return;
+
+        float distToPlayer = Vector3.Distance(transform.position, m_playerTransform.position);
+
+        // Menzile girdi  dur ve saldýr
+        if (distToPlayer <= attackRange)
         {
-            Move(speedRun);
-            enemy_1.SetDestination(m_playerPosition);
+            CaughtPlayer();
+            Stop();
+            Attack();
+            return; // alttaki kodu çalýþtýrma
         }
 
+        // Menzil dýþýna çýktý  tekrar kovala
+        m_playerCaught = false;
+        Move(speedRun);
+        enemy_1.SetDestination(m_playerPosition);
+
+        // Player çok uzaklaþtýysa patrol'a dön
         if (enemy_1.remainingDistance <= enemy_1.stoppingDistance)
         {
-            float distToPlayer = m_playerTransform != null
-                ? Vector3.Distance(transform.position, m_playerTransform.position)
-                : float.MaxValue;
-
-            if (m_waitTime <= 0 && !m_playerCaught && distToPlayer >= 6f)
+            if (m_waitTime <= 0 && distToPlayer >= 6f)
             {
                 m_isPatrol = true;
                 m_playerNear = false;
@@ -203,12 +231,37 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                if (distToPlayer >= 2.5f)
-                {
-                    Stop();
-                    m_waitTime -= Time.deltaTime;
-                }
+                Stop();
+                m_waitTime -= Time.deltaTime;
             }
         }
+    }
+    void Attack()
+    {
+        if (m_playerTransform == null || playerController == null || isDead) return;
+
+        float distanceToPlayer = Vector3.Distance(transform.position, m_playerTransform.position);
+        if (distanceToPlayer <= attackRange && Time.time >= lastAttackTime + 1.5f)
+        {
+            lastAttackTime = Time.time;
+            m_animator.SetTrigger("Attack");
+            playerController.TakeDamage(attackDamage);
+        }
+    }
+    public void TakeDamage(int damage)
+    {
+
+        if (isDead) return;
+        m_health -= damage;
+        m_animator.SetTrigger("TakeDamage");
+        if (m_health <= 0) Die();
+    }
+
+    private void Die()
+    {
+        isDead = true;
+        m_animator.SetBool("isDead", true);
+        enemy_1.speed = 0;
+        Stop();
     }
 }
