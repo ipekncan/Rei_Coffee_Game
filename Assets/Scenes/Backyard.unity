@@ -9808,7 +9808,8 @@ PrefabInstance:
       value: PLAYER_SYSTEM_BUNDLE
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1647349220316096381, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
