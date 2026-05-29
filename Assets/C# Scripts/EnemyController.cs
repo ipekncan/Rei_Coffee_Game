@@ -2,10 +2,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
-
 public class EnemyController : MonoBehaviour
 {
-
     public NavMeshAgent enemy_1;
 
     public float startWaitTime = 4;
@@ -19,6 +17,7 @@ public class EnemyController : MonoBehaviour
 
     public bool isDead = false;
     public int m_health = 50;
+    private int maxHealth;
 
     public float attackRange = 2.5f;
     public int attackDamage = 10;
@@ -38,7 +37,7 @@ public class EnemyController : MonoBehaviour
     Transform m_playerTransform;
     Animator m_animator;
 
-    private PlayerController playerController; // bunu ekle
+    private PlayerController playerController;
     private float lastAttackTime;
 
     void Start()
@@ -52,21 +51,30 @@ public class EnemyController : MonoBehaviour
         m_playerInRange = false;
         m_currentWaypointIndex = 0;
 
+        maxHealth = m_health;
+
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
         {
             m_playerTransform = playerObj.transform;
-            playerController = playerObj.GetComponent<PlayerController>(); // bunu ekle
+            playerController = playerObj.GetComponent<PlayerController>();
         }
 
-        enemy_1 = GetComponent<NavMeshAgent>();
-        enemy_1.isStopped = false;
-        enemy_1.speed = speedWalk;
-        enemy_1.SetDestination(waypoints[m_currentWaypointIndex].position);
+        if (enemy_1 == null)
+            enemy_1 = GetComponent<NavMeshAgent>();
+
+        if (enemy_1 != null && waypoints.Length > 0)
+        {
+            enemy_1.isStopped = false;
+            enemy_1.speed = speedWalk;
+            enemy_1.SetDestination(waypoints[m_currentWaypointIndex].position);
+        }
     }
 
     void Update()
     {
+        if (isDead) return;
+
         EnvironmentView();
 
         if (!m_isPatrol)
@@ -77,21 +85,27 @@ public class EnemyController : MonoBehaviour
 
     void Move(float speed)
     {
-        if (!isDead)
+        if (!isDead && enemy_1 != null)
         {
             enemy_1.isStopped = false;
             enemy_1.speed = speed;
-            m_animator.SetFloat("Speed", speed);
-            m_animator.SetBool("IsChasing", !m_isPatrol);
+            if (m_animator != null)
+            {
+                m_animator.SetFloat("Speed", speed);
+                m_animator.SetBool("IsChasing", !m_isPatrol);
+            }
         }
-
     }
 
     void Stop()
     {
-        enemy_1.isStopped = true;
-        enemy_1.speed = 0;
-        m_animator.SetFloat("Speed", 0);
+        if (enemy_1 != null)
+        {
+            enemy_1.isStopped = true;
+            enemy_1.speed = 0;
+        }
+        if (m_animator != null)
+            m_animator.SetFloat("Speed", 0);
     }
 
     void CaughtPlayer()
@@ -101,12 +115,15 @@ public class EnemyController : MonoBehaviour
 
     void NextPoint()
     {
+        if (waypoints.Length == 0) return;
         m_currentWaypointIndex = (m_currentWaypointIndex + 1) % waypoints.Length;
-        enemy_1.SetDestination(waypoints[m_currentWaypointIndex].position);
+        if (enemy_1 != null)
+            enemy_1.SetDestination(waypoints[m_currentWaypointIndex].position);
     }
 
     void LookingPlayer(Vector3 player)
     {
+        if (enemy_1 == null) return;
         enemy_1.SetDestination(player);
 
         if (Vector3.Distance(transform.position, player) <= 3)
@@ -115,7 +132,8 @@ public class EnemyController : MonoBehaviour
             {
                 m_playerNear = false;
                 Move(speedWalk);
-                enemy_1.SetDestination(waypoints[m_currentWaypointIndex].position);
+                if (waypoints.Length > 0)
+                    enemy_1.SetDestination(waypoints[m_currentWaypointIndex].position);
                 m_waitTime = startWaitTime;
                 m_rotateTime = rotateTime;
             }
@@ -145,19 +163,16 @@ public class EnemyController : MonoBehaviour
                 {
                     m_playerInRange = true;
                     m_playerPosition = player.position;
-
                     m_isPatrol = false;
                 }
             }
-        }
-
-        if (!m_playerInRange && !m_isPatrol)
-        {
         }
     }
 
     void Patrol()
     {
+        if (enemy_1 == null) return;
+
         if (m_playerNear)
         {
             if (m_rotateTime <= 0)
@@ -175,7 +190,9 @@ public class EnemyController : MonoBehaviour
         {
             m_playerNear = false;
             playerLastPosition = Vector3.zero;
-            enemy_1.SetDestination(waypoints[m_currentWaypointIndex].position);
+
+            if (waypoints.Length > 0)
+                enemy_1.SetDestination(waypoints[m_currentWaypointIndex].position);
 
             if (enemy_1.remainingDistance <= enemy_1.stoppingDistance)
             {
@@ -196,23 +213,23 @@ public class EnemyController : MonoBehaviour
 
     void Chasing()
     {
+        if (m_playerTransform == null || enemy_1 == null) return;
+
         m_playerNear = false;
         playerLastPosition = Vector3.zero;
 
-        if (m_playerTransform == null) return;
-
         float distToPlayer = Vector3.Distance(transform.position, m_playerTransform.position);
 
-        // Menzile girdi  dur ve saldýr
+        // Menzile girdi - dur ve saldýr
         if (distToPlayer <= attackRange)
         {
             CaughtPlayer();
             Stop();
             Attack();
-            return; // alttaki kodu çalýþtýrma
+            return;
         }
 
-        // Menzil dýþýna çýktý  tekrar kovala
+        // Menzil dýþýna çýktý - tekrar kovala
         m_playerCaught = false;
         Move(speedRun);
         enemy_1.SetDestination(m_playerPosition);
@@ -227,7 +244,8 @@ public class EnemyController : MonoBehaviour
                 Move(speedWalk);
                 m_rotateTime = rotateTime;
                 m_waitTime = startWaitTime;
-                enemy_1.SetDestination(waypoints[m_currentWaypointIndex].position);
+                if (waypoints.Length > 0)
+                    enemy_1.SetDestination(waypoints[m_currentWaypointIndex].position);
             }
             else
             {
@@ -236,6 +254,7 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
+
     void Attack()
     {
         if (m_playerTransform == null || playerController == null || isDead) return;
@@ -244,24 +263,56 @@ public class EnemyController : MonoBehaviour
         if (distanceToPlayer <= attackRange && Time.time >= lastAttackTime + 1.5f)
         {
             lastAttackTime = Time.time;
-            m_animator.SetTrigger("Attack");
+            if (m_animator != null)
+                m_animator.SetTrigger("Attack");
             playerController.TakeDamage(attackDamage);
         }
     }
+
     public void TakeDamage(int damage)
     {
-
         if (isDead) return;
+
         m_health -= damage;
-        m_animator.SetTrigger("TakeDamage");
-        if (m_health <= 0) Die();
+        m_health = Mathf.Max(0, m_health); // Can 0'ýn altýna düþmesin
+
+        if (m_animator != null)
+            m_animator.SetTrigger("TakeDamage");
+
+        if (m_health <= 0)
+            Die();
     }
 
     private void Die()
     {
         isDead = true;
-        m_animator.SetBool("isDead", true);
-        enemy_1.speed = 0;
+        if (m_animator != null)
+            m_animator.SetBool("isDead", true);
+        if (enemy_1 != null)
+        {
+            enemy_1.speed = 0;
+            enemy_1.isStopped = true;
+        }
         Stop();
+
+        // Ölümden sonra health bar'ý gizlemek için tag ekleyebiliriz
+        EnemyHealthBar healthBar = GetComponentInChildren<EnemyHealthBar>();
+        if (healthBar != null)
+            healthBar.gameObject.SetActive(false);
+    }
+
+    // Caný yeniden ayarlamak için (spawn veya heal durumlarýnda)
+    public void SetHealth(int newHealth)
+    {
+        m_health = Mathf.Clamp(newHealth, 0, maxHealth);
+        if (m_health <= 0)
+            Die();
+    }
+
+    // Maksimum caný yeniden ayarlamak için
+    public void SetMaxHealth(int newMaxHealth)
+    {
+        maxHealth = newMaxHealth;
+        m_health = maxHealth;
     }
 }

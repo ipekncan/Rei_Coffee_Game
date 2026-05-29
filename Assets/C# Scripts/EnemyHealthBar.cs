@@ -24,9 +24,11 @@ public class EnemyHealthBar : MonoBehaviour
             enemy = GetComponentInParent<EnemyController>();
 
         // Baþlangýç canýný max olarak kaydet
-        maxHealth = enemy.m_health;
-
-        UpdateBar();
+        if (enemy != null)
+        {
+            maxHealth = enemy.m_health;
+            UpdateBar();
+        }
     }
 
     void Update()
@@ -39,8 +41,12 @@ public class EnemyHealthBar : MonoBehaviour
     {
         if (enemy == null || fillBar == null) return;
 
+        // maxHealth güncelle (eðer can deðiþtiyse)
+        if (enemy.m_health > maxHealth)
+            maxHealth = enemy.m_health;
+
         // Can oranýný hesapla (0.0 - 1.0)
-        float fillAmount = (float)enemy.m_health / maxHealth;
+        float fillAmount = maxHealth > 0 ? (float)enemy.m_health / maxHealth : 0f;
         fillAmount = Mathf.Clamp01(fillAmount);
 
         // Barý güncelle
@@ -58,7 +64,9 @@ public class EnemyHealthBar : MonoBehaviour
     {
         if (cameraTransform == null) return;
 
-        // Canvas her zaman kameraya dönsün
-        transform.LookAt(transform.position + cameraTransform.forward);
+        // Billboard efekti - Canvas her zaman kameraya dönsün
+        Vector3 direction = cameraTransform.forward;
+        direction.y = 0;
+        transform.rotation = Quaternion.LookRotation(direction);
     }
 }
