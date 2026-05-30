@@ -24053,6 +24053,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 21.62
       objectReference: {fileID: 0}
+    - target: {fileID: 1088113027203470660, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: isDead
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1492005760129714404, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 80.03539
@@ -24185,6 +24189,62 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1772618961, guid: 152f4c229b5c9eb479d8b8e600036b97, type: 3}
+    - target: {fileID: 5495554459463874047, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_NotificationBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495554459463874047, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495554459463874047, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_ActionId
+      value: c14912e4-6c11-4761-a23e-d3a698dd1eb2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495554459463874047, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionId
+      value: 3f1f98e0-91d7-49f4-bc38-b3d8eda100e7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495554459463874047, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionId
+      value: fa7cbfbb-e782-4586-8378-fe82fcbae236
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495554459463874047, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
+      value: 0ce4d52a-945d-4735-9907-8c0e50f3c87e
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495554459463874047, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+      value: 3faa89fa-9cca-417c-96f2-08ae969981fb
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495554459463874047, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionId
+      value: e6ce3ca2-e08d-480a-b74b-19b4e312365c
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495554459463874047, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_ActionName
+      value: 'Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495554459463874047, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionName
+      value: 'Player/Attack[/Mouse/leftButton]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495554459463874047, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionName
+      value: 'Player/Sprint[/Keyboard/leftShift]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495554459463874047, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
+      value: 'Player/Interact[/Keyboard/e]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495554459463874047, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionName
+      value: 'Player/ToggleInventory[/Keyboard/b]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495554459463874047, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionName
+      value: 'Player/HotbarInteraction[/Keyboard/1,/Keyboard/2,/Keyboard/3,/Keyboard/4,/Keyboard/5,/Keyboard/6,/Keyboard/7]'
+      objectReference: {fileID: 0}
     - target: {fileID: 5819476375134960522, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -27.8

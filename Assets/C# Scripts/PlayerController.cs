@@ -60,10 +60,10 @@ public class PlayerController : MonoBehaviour
     }
 
    
-    public void OnSprint(InputValue value)
-    {
-        isSprinting = value.isPressed;
-    }
+    //public void OnSprint(InputValue value)
+    //{
+    //    isSprinting = value.Get<float>() > 0.5f; 
+    //}
 
     public void OnAttack(InputValue value)
     {
@@ -267,6 +267,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if(isDead== true || isInventoryOpen==true) { return; }
+
+        isSprinting = Keyboard.current.leftShiftKey.isPressed;
+
         ApplyGravity();
         MovePlayer();
         HandleRotation();
