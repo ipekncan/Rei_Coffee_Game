@@ -12,6 +12,7 @@ TagManager:
   - Machine
   - Plant
   - Recipe
+  - Customer
   layers:
   - Default
   - TransparentFX

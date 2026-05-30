@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
    
     //public void OnSprint(InputValue value)
     //{
-    //    isSprinting = value.Get<float>() > 0.5f; 
+    //    isSprinting = value.isPressed; 
     //}
 
     public void OnAttack(InputValue value)
