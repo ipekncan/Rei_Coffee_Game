@@ -60,10 +60,7 @@ public class PlayerController : MonoBehaviour
     }
 
    
-    //public void OnSprint(InputValue value)
-    //{
-    //    isSprinting = value.isPressed; 
-    //}
+    
 
     public void OnAttack(InputValue value)
     {
@@ -103,6 +100,7 @@ public class PlayerController : MonoBehaviour
 
         foreach (var hitCollider in hitColliders)
         {
+            if (hitCollider.CompareTag("Customer")) return hitCollider.gameObject;
             if (hitCollider.GetComponent<PlantBehaviour>() != null) return hitCollider.gameObject;
 
             if (hitCollider.CompareTag("Machine") ||
@@ -124,7 +122,13 @@ public class PlayerController : MonoBehaviour
 
             if (target != null)
             {
-               
+                // Müþteriye sipariþ al
+                if (target.TryGetComponent<CustomerController>(out CustomerController customer))
+                {
+                    customer.TakeOrder();
+                    return;
+                }
+
                 if (target.TryGetComponent<PlantBehaviour>(out PlantBehaviour plant))
                 {
                     if (plant.isHarvestable)

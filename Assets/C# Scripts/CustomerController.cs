@@ -1,85 +1,110 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CustomerController : MonoBehaviour
 {
+    public Image fillBar;
+    public float waitTime = 30f;
+    public float currentWaitTime = 0f;
+    public bool isOrderTaken = false;
 
-    public float speed = 3f; // Speed at which the customer moves
-    public Transform target; // The target position the customer will move towards
-    public float stoppingDistance = 0.05f; // Distance at which the customer will stop moving towards the target
-    public float rotationSpeed = 5f; // Speed at which the customer rotates to face the target
+    public float speed = 3f;
+    public Transform target;
+    public float stoppingDistance = 0.05f;
+    public float rotationSpeed = 5f;
+    public float satisfactionLevel = 100f;
+
     public bool isMoving = false;
-    public bool isCompleted = false;
-    public bool isActive = true;
-    public int satisfactionLevel = 100; // Customer's satisfaction level (0-100) it will decrease if the customer waits too long or if the order is not fulfilled correctly
+    public bool isWaiting = false;   // hedefe ulaþtý, bekliyor
+    public bool isFinished = false;  // sipariþ tamamlandý
 
     private Animator animator;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         animator = GetComponent<Animator>();
-        if (isActive && target != null)
+        if (target != null)
         {
             isMoving = true;
             animator.SetBool("isStopped", false);
-            MoveToTarget();
         }
-
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-        MoveToTarget();
+        if (isFinished) return;
+        if (isMoving)
+            MoveToTarget();
+        if (isWaiting)
+            UpdateBar();
     }
-    public void MoveToTarget()
+
+    void MoveToTarget()
     {
-        if (isMoving && target != null)
+        if (target == null) return;
+
+        Vector3 direction = (target.position - transform.position).normalized;
+        transform.position += direction * speed * Time.deltaTime;
+
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        if (Vector3.Distance(transform.position, target.position) <= stoppingDistance)
         {
-            // Move towards the target
-            Vector3 direction = (target.position - transform.position).normalized;
-            transform.position += direction * speed * Time.deltaTime;
-            // Rotate to face the target
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-            // Check if the customer has reached the target
-            if (Vector3.Distance(transform.position, target.position) <= stoppingDistance)
-            {
-                isMoving = false;
-                animator.SetBool("isStopped", true);
-                isCompleted = true;
-                OrderCoffee();
-            }
+            isMoving = false;
+            isWaiting = true;
+            animator.SetBool("isStopped", true);
+
+
         }
     }
+
+    void UpdateBar()
+    {
+        if (fillBar == null) return;
+
+        currentWaitTime += Time.deltaTime;
+
+        float fillAmount = waitTime > 0
+            ? 1f - (currentWaitTime / waitTime)
+            : 0f;
+        fillAmount = Mathf.Clamp01(fillAmount);
+
+        fillBar.fillAmount = fillAmount;
+        fillBar.color = Color.Lerp(Color.red, Color.green, fillAmount);
+
+        // Süre doldu, sabýrsýzca ayrýl
+        if (currentWaitTime >= waitTime)
+        {
+            isWaiting = false;
+            isFinished = true;
+            fillBar.gameObject.SetActive(false);
+            float finalSatisfaction = isOrderTaken ? satisfactionLevel : 0f;
+            OrderResult(finalSatisfaction);
+            DeactivateCustomer();
+        }
+    }
+
     public void OrderCoffee()
     {
-        // Simulate ordering coffee
-        Debug.Log("Customer has ordered coffee.");
-        // Here you can add logic to decrease satisfaction level if the order takes too long or is not fulfilled correctly
-        OrderResult();
+        satisfactionLevel = 100f - (currentWaitTime / waitTime) * 100f;
+        OrderResult(satisfactionLevel);
     }
-    void OrderResult()
+
+    void OrderResult(float satisfaction)
     {
-        // Simulate the result of the order
-        bool isOrderFulfilled = Random.value > 0.5f; // Randomly determine if the order is fulfilled correctly
-        if (isOrderFulfilled)
-        {
-            Debug.Log("Customer received their coffee. Satisfaction level: " + satisfactionLevel);
-        }
-        else
-        {
-            satisfactionLevel -= 20; // Decrease satisfaction level if the order is not fulfilled correctly
-            Debug.Log("Customer did not receive their coffee correctly. Satisfaction level: " + satisfactionLevel);
-        }
-        //after that we will deactivate the customer and reset the satisfaction level for the next time and delete the customer game object after a short delay
-        DeactivateCustomer();
+        Debug.Log($"Sipariþ {(isFinished ? "tamamlandý" : "baþarýsýz")}. Memnuniyet: {satisfaction}");
     }
+    public void TakeOrder()
+    {
+        if (!isWaiting || isFinished || isOrderTaken) return;
+        isOrderTaken = true;
+        OrderCoffee();
+    }
+
     void DeactivateCustomer()
     {
-        isActive = false;
-        satisfactionLevel = 100; // Reset satisfaction level for the next time
-        Destroy(gameObject, 2f); // Delete the customer game object after a short delay
+        satisfactionLevel = 100f;
+        Destroy(gameObject, 2f);
     }
 }

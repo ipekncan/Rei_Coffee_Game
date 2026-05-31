@@ -70,3 +70,4 @@ public class EnemyHealthBar : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(direction);
     }
 }
+
