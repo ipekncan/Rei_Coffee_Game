@@ -45,7 +45,7 @@ public class SceneChanger : MonoBehaviour
 
                 if (currentHour >= timeManager.dayStartHour && currentHour < timeManager.nightStartHour)
                 {
-                    ShowWarning("Dışarısı şu an çok tehlikeli, geceyi bekle!");
+                    ShowWarning("It's very dangerous outside right now, wait until night!");
                     return;
 
                 }

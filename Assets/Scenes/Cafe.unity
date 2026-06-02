@@ -2411,6 +2411,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6be81f24ca324146b77b9e4aa15dcbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
+--- !u!1 &1291157476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5692909779896482942, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+  m_PrefabInstance: {fileID: 1092718930}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1298443639
 GameObject:
   m_ObjectHideFlags: 0
@@ -3511,6 +3516,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2032432325}
   m_CullTransparentMesh: 1
+--- !u!114 &2131604676 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1283499613911064452, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+  m_PrefabInstance: {fileID: 1092718930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &2794480269062274210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3640,10 +3656,26 @@ PrefabInstance:
       propertyPath: 'hotbarButtons.Array.data[6]'
       value: 
       objectReference: {fileID: 2032432327}
+    - target: {fileID: 7972830507880093064, guid: 08709cf4a028e5f4a812691c7f7c151b, type: 3}
+      propertyPath: warningText
+      value: 
+      objectReference: {fileID: 2131604676}
+    - target: {fileID: 7972830507880093064, guid: 08709cf4a028e5f4a812691c7f7c151b, type: 3}
+      propertyPath: warningPanel
+      value: 
+      objectReference: {fileID: 1291157476}
     - target: {fileID: 8202693819840722248, guid: 08709cf4a028e5f4a812691c7f7c151b, type: 3}
       propertyPath: m_Name
       value: Cafe_Ic_Esyasiz
       objectReference: {fileID: 0}
+    - target: {fileID: 8365873195052695702, guid: 08709cf4a028e5f4a812691c7f7c151b, type: 3}
+      propertyPath: warningText
+      value: 
+      objectReference: {fileID: 2131604676}
+    - target: {fileID: 8365873195052695702, guid: 08709cf4a028e5f4a812691c7f7c151b, type: 3}
+      propertyPath: warningPanel
+      value: 
+      objectReference: {fileID: 1291157476}
     - target: {fileID: 8835501981546426354, guid: 08709cf4a028e5f4a812691c7f7c151b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 63.709
