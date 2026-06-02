@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -357,7 +358,8 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         animator.SetBool("isDead", true);
         movement = Vector3.zero;
-        
+        SceneManager.LoadScene("GameOverScene");
+
     }
 
     //we can see the detection radius in the editor for debugging purposes, this will help us to adjust the radius for better gameplay experience
