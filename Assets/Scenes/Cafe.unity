@@ -1191,6 +1191,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 887217236407842257, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 887217236407842257, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 887217236407842257, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1594925230}
+    - target: {fileID: 887217236407842257, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 887217236407842257, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BrewCoffee
+      objectReference: {fileID: 0}
+    - target: {fileID: 887217236407842257, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CafeMakerManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 887217236407842257, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333618232783258541, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1492005760129714404, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 80.03539
@@ -1229,6 +1261,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1492005760129714404, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816163012360698573, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9127324802225294436, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}
@@ -1685,6 +1721,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1594925230 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 974026796506755558, guid: 08709cf4a028e5f4a812691c7f7c151b, type: 3}
+  m_PrefabInstance: {fileID: 5329556426501881972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cbb485d8b3369849918ef610efb0087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CafeMakerManager
 --- !u!114 &1645081701 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2370447379732285863, guid: 65e53e47e6b06ad4d933ab1d9226872c, type: 3}

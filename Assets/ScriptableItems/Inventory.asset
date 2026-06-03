@@ -16,18 +16,18 @@ MonoBehaviour:
   - hasItem: 1
     itemCount: 1
     item: {fileID: 11400000, guid: 6c99d8731502cb94084b2763f159da18, type: 2}
+  - hasItem: 0
+    itemCount: 0
+    item: {fileID: 0}
+  - hasItem: 0
+    itemCount: 0
+    item: {fileID: 0}
   - hasItem: 1
-    itemCount: 2
+    itemCount: 12
     item: {fileID: 11400000, guid: a725765a6ef33a342a6ac949614fccf8, type: 2}
   - hasItem: 1
-    itemCount: 2
+    itemCount: 12
     item: {fileID: 11400000, guid: 6f241e20adc00594592e8349cd73a544, type: 2}
-  - hasItem: 0
-    itemCount: 0
-    item: {fileID: 0}
-  - hasItem: 0
-    itemCount: 0
-    item: {fileID: 0}
   - hasItem: 0
     itemCount: 0
     item: {fileID: 0}
@@ -40,9 +40,9 @@ MonoBehaviour:
   - hasItem: 1
     itemCount: 1
     item: {fileID: 11400000, guid: 56c4fa4330be6724db4c549a2e8a39e6, type: 2}
-  - hasItem: 1
-    itemCount: 1
-    item: {fileID: 11400000, guid: ac17e03d45cd64f4e8003574a61dc0d5, type: 2}
+  - hasItem: 0
+    itemCount: 0
+    item: {fileID: 0}
   - hasItem: 1
     itemCount: 1
     item: {fileID: 11400000, guid: 5ee60675239c5d949b428620177b6c0d, type: 2}
