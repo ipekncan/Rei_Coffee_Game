@@ -18,7 +18,34 @@ public class CustomerController : MonoBehaviour
     public bool isWaiting = false;   // hedefe ulaþtý, bekliyor
     public bool isFinished = false;  // sipariþ tamamlandý
 
+    [Header("Recipe UI")]
+    public Image recipeIcon; // Müþterinin kafasýndaki ikon
+
+    private ScRecipe requestedRecipe;
+
     private Animator animator;
+
+    void OnEnable()
+    {
+        // Olayý dinlemeye baþla,tarifi öðrendikten sonra sipariþ verebilmesi için
+
+        RecipeManager.OnRecipeLearned += CheckForNewRecipe;
+    }
+
+    void OnDisable()
+    {
+        // Olayý dinlemeyi býrak (Hata almamak için þart!)
+        RecipeManager.OnRecipeLearned -= CheckForNewRecipe;
+    }
+
+    void CheckForNewRecipe()
+    {
+        // Eðer müþteri henüz bir tarif almadýysa (beklemedeyse) ve yeni tarif gelirse:
+        if (requestedRecipe == null)
+        {
+            AssignRandomRecipe();
+        }
+    }
 
     void Start()
     {
@@ -28,6 +55,7 @@ public class CustomerController : MonoBehaviour
             isMoving = true;
             animator.SetBool("isStopped", false);
         }
+        AssignRandomRecipe();
     }
 
     void Update()
@@ -38,7 +66,35 @@ public class CustomerController : MonoBehaviour
         if (isWaiting)
             UpdateBar();
     }
+    void LateUpdate()
+    {
+        if (recipeIcon != null && recipeIcon.isActiveAndEnabled)
+        {
+            // Ýkonun bulunduðu Canvas'ýn kameraya bakmasý içim
+            recipeIcon.transform.LookAt(Camera.main.transform);
+        }
+    }
 
+    void AssignRandomRecipe()
+    {
+        if (RecipeManager.learnedRecipes != null && RecipeManager.learnedRecipes.Count > 0)
+        {
+            int randomIndex = Random.Range(0, RecipeManager.learnedRecipes.Count);
+            requestedRecipe = RecipeManager.learnedRecipes[randomIndex];
+
+            if (recipeIcon != null)
+            {
+                recipeIcon.sprite = requestedRecipe.itemIcon;
+                recipeIcon.gameObject.SetActive(true);
+            }
+            Debug.Log("Müþteri yeni bir tarif istedi: " + requestedRecipe.resultItem.itemName);
+        }
+        else
+        {
+            Debug.Log("Henüz hiç tarif öðrenilmemiþ.");
+            if (recipeIcon != null) recipeIcon.gameObject.SetActive(false);
+        }
+    }
     void MoveToTarget()
     {
         if (target == null) return;
@@ -54,8 +110,6 @@ public class CustomerController : MonoBehaviour
             isMoving = false;
             isWaiting = true;
             animator.SetBool("isStopped", true);
-
-
         }
     }
 
@@ -99,6 +153,7 @@ public class CustomerController : MonoBehaviour
     {
         if (!isWaiting || isFinished || isOrderTaken) return;
         isOrderTaken = true;
+        if (recipeIcon != null) recipeIcon.gameObject.SetActive(false);
         OrderCoffee();
     }
 

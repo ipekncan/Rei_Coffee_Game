@@ -16,6 +16,8 @@ public class RecipeManager : MonoBehaviour
     public GameObject recipePanel;
     public TextMeshProUGUI recipeText;
 
+
+    public static event System.Action OnRecipeLearned;
     void Awake()
     {
       if (Instance == null)
@@ -49,6 +51,8 @@ public class RecipeManager : MonoBehaviour
                 
             }
             UpdateRecipeUI();
+
+            OnRecipeLearned?.Invoke();
         }
     }
 
