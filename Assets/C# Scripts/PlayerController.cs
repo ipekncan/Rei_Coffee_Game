@@ -282,34 +282,29 @@ public class PlayerController : MonoBehaviour
     }
     public void UpdateEquippedItem()
     {
-        Debug.Log($"UpdateEquippedItem çaðrýldý! Çaðýran obje: {gameObject.name}", gameObject);
-        if (currentEquippedItem != null)
+        
+        foreach (Transform child in itemHolder)
         {
-            Destroy(currentEquippedItem);
-            currentEquippedItem = null; 
+            Destroy(child.gameObject);
         }
+        currentEquippedItem = null;
 
+        
         var inventoryData = playerInventory.playerInventory.inventorySlots;
         if (selectedSlot < inventoryData.Count)
         {
             var slot = inventoryData[selectedSlot];
 
-           
-            if (slot.itemCount > 0 && slot.item != null && slot.item.itemPrefab != null)
+            if (slot.itemCount > 0 && slot.item != null && slot.item.itemModel != null)
             {
-                if (slot.item is ScPlant plantItem && plantItem.equippedHandPrefab != null)
+                
+                currentEquippedItem = Instantiate(slot.item.itemModel, itemHolder);
+                currentEquippedItem.transform.localPosition = Vector3.zero;
+                currentEquippedItem.transform.localRotation = Quaternion.identity;        
+                Collider[] colliders = currentEquippedItem.GetComponentsInChildren<Collider>();
+                foreach (Collider c in colliders)
                 {
-                    currentEquippedItem = Instantiate(plantItem.equippedHandPrefab, itemHolder);
-                }
-                else if (slot.item.itemPrefab != null)
-                {
-                    currentEquippedItem = Instantiate(slot.item.itemPrefab, itemHolder);
-                }
-
-                if (currentEquippedItem != null)
-                {
-                    currentEquippedItem.transform.localPosition = Vector3.zero;
-                    currentEquippedItem.transform.localRotation = Quaternion.identity;
+                    c.enabled = false;
                 }
             }
         }

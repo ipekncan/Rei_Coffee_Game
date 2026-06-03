@@ -35,7 +35,13 @@ public class RecipeManager : MonoBehaviour
 
     public void LearnNewRecipe(ScRecipe newRecipe)
     {
-        if(!learnedRecipes.Contains(newRecipe))
+        if (learnedRecipes.Contains(newRecipe))
+        {
+            Debug.Log("Bu tarif zaten öðrenildi: " + newRecipe.itemName);
+            
+            return;
+        }
+        if (!learnedRecipes.Contains(newRecipe))
         {
             learnedRecipes.Add(newRecipe);
             if (notificationPanel != null && recipeText != null) { 

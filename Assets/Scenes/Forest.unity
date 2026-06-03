@@ -10937,6 +10937,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90e3ee736e90bb409a470eaedf9810c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  lootTable:
+  - {fileID: 5704115526650620083, guid: 509c62b7df14c2f4b9b6bdc1586cad6f, type: 3}
+  - {fileID: 7251681571624971593, guid: 930fc26579b8600498916f0a8f78a0a7, type: 3}
+  - {fileID: 4372696728036027712, guid: a2d32f7bce84a1149920f987a67f31a7, type: 3}
+  - {fileID: 6916348174059949242, guid: 893163d3cf285524d9cfa382530de5ab, type: 3}
+  - {fileID: 4678995829667890566, guid: 52776653d030fd145b0dc8e0efc72992, type: 3}
+  - {fileID: 2413453932881820288, guid: bc39831aed5b21d48a8f5828812da8c3, type: 3}
+  - {fileID: 3738277315572367124, guid: 75cdf0966536fd8409e07ad45e4fac50, type: 3}
+  - {fileID: 8903686473897632135, guid: 583176b403cba1a4496b44508181f668, type: 3}
+  - {fileID: 8965960869372939898, guid: 39d8272c7ccae094689a7d1f889e3a12, type: 3}
+  - {fileID: 3301471069638625418, guid: 881e46ff594cc09499f558fb2792a5d4, type: 3}
   enemy_1: {fileID: 472306531}
   startWaitTime: 4
   rotateTime: 2
@@ -15714,6 +15725,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90e3ee736e90bb409a470eaedf9810c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  lootTable:
+  - {fileID: 5704115526650620083, guid: 509c62b7df14c2f4b9b6bdc1586cad6f, type: 3}
+  - {fileID: 3132088345051974293, guid: cca6fca47d907ee4ab65bd65d1b17ae3, type: 3}
+  - {fileID: 7251681571624971593, guid: 930fc26579b8600498916f0a8f78a0a7, type: 3}
+  - {fileID: 8065244574290726803, guid: 126c9e454f1b13b42b7a236c620f6ec1, type: 3}
+  - {fileID: 6916348174059949242, guid: 893163d3cf285524d9cfa382530de5ab, type: 3}
+  - {fileID: 4372696728036027712, guid: a2d32f7bce84a1149920f987a67f31a7, type: 3}
+  - {fileID: 6916348174059949242, guid: 893163d3cf285524d9cfa382530de5ab, type: 3}
+  - {fileID: 3446427083965145966, guid: 9e57e680304e94c439fdcd5a4cac997d, type: 3}
+  - {fileID: 4678995829667890566, guid: 52776653d030fd145b0dc8e0efc72992, type: 3}
+  - {fileID: 2413453932881820288, guid: bc39831aed5b21d48a8f5828812da8c3, type: 3}
+  - {fileID: 4880048765097614100, guid: d0b9ee25a09f0114ab52849b54500b2f, type: 3}
+  - {fileID: 3738277315572367124, guid: 75cdf0966536fd8409e07ad45e4fac50, type: 3}
+  - {fileID: 6863405428000219381, guid: 3cf701b9ff43d654e86d3dcf27bbe48f, type: 3}
+  - {fileID: 8903686473897632135, guid: 583176b403cba1a4496b44508181f668, type: 3}
+  - {fileID: 8965960869372939898, guid: 39d8272c7ccae094689a7d1f889e3a12, type: 3}
+  - {fileID: 3301471069638625418, guid: 881e46ff594cc09499f558fb2792a5d4, type: 3}
   enemy_1: {fileID: 671787746}
   startWaitTime: 4
   rotateTime: 2
@@ -25129,8 +25157,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 12
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.49962977, g: 0.55374527, b: 0.78113204, a: 1}
+  m_Intensity: 0.3
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -25192,13 +25220,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095431320}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11673386, y: 0.8710485, z: -0.4061764, w: 0.2503368}
+  m_LocalRotation: {x: 0.075114004, y: 0.9248761, z: -0.2613598, w: 0.2658067}
   m_LocalPosition: {x: 14.196087, y: 2.999992, z: -58.762207}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: 147.931, z: 0}
+  m_LocalEulerAnglesHint: {x: 31.559, y: 147.931, z: 0}
 --- !u!114 &1095431323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47611,6 +47639,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90e3ee736e90bb409a470eaedf9810c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  lootTable:
+  - {fileID: 2531123239104218202, guid: f48c26040311d794385e4438829e2ce4, type: 3}
+  - {fileID: 6238005182571783423, guid: b4f7ea4fd8e061347bdb37047a2f5dde, type: 3}
+  - {fileID: 7976053538930728282, guid: ed340adef21acb84c9b365ae18edf44e, type: 3}
+  - {fileID: 2803774873552268364, guid: 5dab3239bd424db42b5fbe4f40f465dc, type: 3}
+  - {fileID: 7251681571624971593, guid: 930fc26579b8600498916f0a8f78a0a7, type: 3}
+  - {fileID: 4372696728036027712, guid: a2d32f7bce84a1149920f987a67f31a7, type: 3}
+  - {fileID: 4678995829667890566, guid: 52776653d030fd145b0dc8e0efc72992, type: 3}
+  - {fileID: 8965960869372939898, guid: 39d8272c7ccae094689a7d1f889e3a12, type: 3}
+  - {fileID: 8903686473897632135, guid: 583176b403cba1a4496b44508181f668, type: 3}
   enemy_1: {fileID: 2079705501}
   startWaitTime: 4
   rotateTime: 2

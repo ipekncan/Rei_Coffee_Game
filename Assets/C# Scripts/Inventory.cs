@@ -61,16 +61,18 @@ public class Inventory:MonoBehaviour
 
             if (groundItem != null)
             {
-                if (playerInventory != null) 
+             
+                Collider col = other.GetComponent<Collider>();
+                if (col != null) col.enabled = false;
+
+                
+                if (playerInventory != null)
                 {
                     playerInventory.AddItem(groundItem.itemData, groundItem.amount);
-                    Debug.Log(groundItem.itemData.itemName + " baþarýyla listeye gönderildi!");
                     uiInventory.UpdateUI();
+
+                    
                     Destroy(other.gameObject);
-                }
-                else
-                {
-                    Debug.LogError("DÝKKAT: Player üzerindeki Inventory scriptinde ScInventory dosyasý eksik!");
                 }
             }
         }

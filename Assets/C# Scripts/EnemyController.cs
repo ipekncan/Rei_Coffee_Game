@@ -1,9 +1,14 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class EnemyController : MonoBehaviour
 {
+    [Header("Loot Settings")]
+    public List<GameObject> lootTable;
+
+    [Header("Movements")]
     public NavMeshAgent enemy_1;
 
     public float startWaitTime = 4;
@@ -299,6 +304,25 @@ public class EnemyController : MonoBehaviour
         EnemyHealthBar healthBar = GetComponentInChildren<EnemyHealthBar>();
         if (healthBar != null)
             healthBar.gameObject.SetActive(false);
+
+        //Loot Düþürme------------------------------------------------------
+        if (lootTable != null && lootTable.Count > 0)
+        {
+            int dropCount = Random.Range(0, 4);
+
+            for (int i = 0; i < dropCount; i++)
+            {
+                int randomIndex = Random.Range(0, lootTable.Count);
+                GameObject selectedLoot = lootTable[randomIndex];
+
+                // Eþyalarýn birbirinin üstüne binmemesi için hafif bir sapma 
+                Vector3 spawnOffset = new Vector3(Random.Range(-0.5f, 0.5f), 0.5f, Random.Range(-0.5f, 0.5f));
+
+                Instantiate(selectedLoot, transform.position + spawnOffset, Quaternion.identity);
+            }
+
+        }
+        Destroy(gameObject, 2f);
     }
 
     // Caný yeniden ayarlamak için (spawn veya heal durumlarýnda)
