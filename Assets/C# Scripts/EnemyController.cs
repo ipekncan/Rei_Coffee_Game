@@ -219,21 +219,21 @@ public class EnemyController : MonoBehaviour
     void Chasing()
     {
         if (m_playerTransform == null || enemy_1 == null) return;
-
+        enemy_1.SetDestination(m_playerTransform.position);
         m_playerNear = false;
         playerLastPosition = Vector3.zero;
 
         float distToPlayer = Vector3.Distance(transform.position, m_playerTransform.position);
-
+        Debug.Log("Distance to player: " + distToPlayer);
         // Menzile girdi - dur ve saldýr
         if (distToPlayer <= attackRange)
-        {
+        {   Debug.Log("Player in attack range, attacking!");
             CaughtPlayer();
             Stop();
             Attack();
             return;
         }
-
+        Debug.Log("Player out of attack range, chasing!");
         // Menzil dýþýna çýktý - tekrar kovala
         m_playerCaught = false;
         Move(speedRun);
@@ -269,8 +269,9 @@ public class EnemyController : MonoBehaviour
         {
             lastAttackTime = Time.time;
             if (m_animator != null)
-                m_animator.SetTrigger("Attack");
+                m_animator.SetTrigger("isAttacking");
             playerController.TakeDamage(attackDamage);
+            Debug.Log("Enemy attacked the player for " + attackDamage + " damage.");
         }
     }
 
